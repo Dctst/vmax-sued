@@ -1,25 +1,37 @@
 <%- include('../layouts/main') %>
 
 <!-- ============================================
-     HERO — 100vh
+     SEKTION 1 — HERO (100vh)
      ============================================ -->
-<section class="relative h-screen flex items-end pb-20 lg:pb-24">
-  <!-- Background (Platzhalter — später echtes Prüfstand-Foto) -->
-  <div class="absolute inset-0 bg-bg-secondary">
-    <div class="absolute inset-0 bg-gradient-hero z-10"></div>
+<section class="relative h-screen flex items-end pb-20 lg:pb-24 overflow-hidden" id="hero">
+  <!-- Background mit Ken-Burns-Effekt -->
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-bg-secondary hero-bg-image"
+         style="background-image: url('https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=1920&q=80');
+                background-size: cover; background-position: center;">
+    </div>
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/60 to-bg-primary/20 z-10"></div>
+    <!-- Zusätzlicher Bottom-Gradient für nahtlosen Übergang -->
+    <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg-primary to-transparent z-10"></div>
   </div>
 
   <div class="container-vmax relative z-20">
     <!-- Trust Badge -->
-    <p class="label-caps text-accent mb-6">Partner der VMAX Performance Gruppe · seit 1997</p>
+    <div class="inline-flex items-center gap-2 mb-8 opacity-0" data-reveal>
+      <span class="w-8 h-px bg-accent"></span>
+      <span class="label-caps text-accent">Partner der VMAX Performance Gruppe · seit 1997</span>
+    </div>
 
-    <h1 class="font-display text-5xl md:text-7xl lg:text-display-hero font-medium uppercase tracking-tight leading-none">
+    <h1 class="font-display text-5xl md:text-7xl lg:text-display-hero font-medium uppercase tracking-tight leading-[0.95] opacity-0" data-reveal data-delay="100">
       Leistung<br>zum Anfassen.
     </h1>
-    <p class="mt-6 text-lg md:text-body-lg text-text-secondary max-w-2xl">
-      Einzelabstimmung. TÜV-Eintragung. Prüftechnik aus Schwaben&nbsp;— für Deutschland.
+
+    <p class="mt-6 text-lg md:text-body-lg text-text-secondary max-w-2xl opacity-0" data-reveal data-delay="200">
+      Einzelabstimmung. TÜV-Eintragung. Prüftechnik aus Schwaben&nbsp;— für&nbsp;Deutschland.
     </p>
-    <div class="flex flex-col sm:flex-row gap-4 mt-10">
+
+    <div class="flex flex-col sm:flex-row gap-4 mt-10 opacity-0" data-reveal data-delay="300">
       <a href="/kontakt" class="btn-primary">
         Termin anfragen
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -31,17 +43,187 @@
   </div>
 
   <!-- Scroll Indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-text-muted">
-    <span class="font-mono text-xs tracking-widest">scroll</span>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-text-muted opacity-0" data-reveal data-delay="600">
+    <span class="font-mono text-[10px] tracking-[0.2em] uppercase">scroll</span>
     <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7"/></svg>
   </div>
 </section>
 
-<!-- Platzhalter: Sektionen 2-10 folgen in Deliverable 3-5 -->
-<section class="section-spacing">
-  <div class="container-vmax text-center text-text-muted">
-    <p class="label-caps">Weitere Sektionen folgen</p>
+
+<!-- ============================================
+     SEKTION 2 — KENNZAHLEN-BAND
+     ============================================ -->
+<section class="relative z-30 bg-bg-primary" id="kennzahlen">
+  <div class="border-y border-border-subtle">
+    <div class="container-vmax py-12 lg:py-16">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+
+        <div class="text-center lg:text-left" data-reveal>
+          <p class="font-mono text-4xl lg:text-5xl font-medium text-text-primary" data-counter="80">
+            <span class="counter-value">0</span><span class="text-accent">%</span>
+          </p>
+          <p class="text-text-secondary text-sm mt-2">Fahrzeugabdeckung</p>
+        </div>
+
+        <div class="text-center lg:text-left" data-reveal data-delay="100">
+          <p class="font-mono text-4xl lg:text-5xl font-medium text-text-primary" data-counter="28">
+            <span class="counter-value">0</span><span class="text-accent">+</span>
+          </p>
+          <p class="text-text-secondary text-sm mt-2">Jahre Netzwerk-Erfahrung</p>
+        </div>
+
+        <div class="text-center lg:text-left" data-reveal data-delay="200">
+          <p class="font-mono text-4xl lg:text-5xl font-medium text-text-primary" data-counter="100">
+            <span class="counter-value">0</span><span class="text-accent">%</span>
+          </p>
+          <p class="text-text-secondary text-sm mt-2">Einzelabstimmung vor Ort</p>
+        </div>
+
+        <div class="text-center lg:text-left" data-reveal data-delay="300">
+          <p class="font-mono text-4xl lg:text-5xl font-medium text-text-primary">
+            <span class="text-text-primary">1</span><span class="text-accent">on</span><span class="text-text-primary">1</span>
+          </p>
+          <p class="text-text-secondary text-sm mt-2">mit Stefan Jung persönlich</p>
+        </div>
+
+      </div>
+    </div>
   </div>
 </section>
+
+
+<!-- ============================================
+     SEKTION 3 — DAS PROBLEM / DIE HALTUNG
+     ============================================ -->
+<section class="section-spacing" id="haltung">
+  <div class="container-vmax">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <!-- Linke Spalte: Headline -->
+      <div class="lg:col-span-5" data-reveal>
+        <span class="label-caps text-accent block mb-4">Unsere Haltung</span>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-display-section font-medium uppercase tracking-tight leading-[1.05]">
+          Warum die meisten Tunings enttäuschen.
+        </h2>
+      </div>
+
+      <!-- Rechte Spalte: Editorial-Text -->
+      <div class="lg:col-span-7 lg:pt-12" data-reveal data-delay="150">
+        <div class="space-y-6 text-text-secondary text-lg leading-relaxed">
+          <p>
+            Eine Software aus dem Netz herunterladen, auf dem Parkplatz aufspielen, Feierabend&nbsp;— das ist kein Tuning. Das ist Glücksspiel mit dem Motor Ihres Fahrzeugs.
+          </p>
+          <p>
+            Bei VMAX Süd wird jedes Fahrzeug einzeln abgestimmt. Kein Fernzugriff, keine Paketlösung. Ihr Wagen steht bei uns, wir messen, wir optimieren, wir testen&nbsp;— und Sie bekommen eine TÜV-konforme Leistungssteigerung mit Nachweis.
+          </p>
+          <p>
+            So macht das seit 1997 die VMAX Performance Gruppe. So machen wir das in&nbsp;Westendorf.
+          </p>
+        </div>
+
+        <!-- Akzent-Linie + Signature -->
+        <div class="mt-10 pt-8 border-t border-border-subtle flex items-center gap-6">
+          <div class="w-12 h-px bg-accent"></div>
+          <div>
+            <p class="text-text-primary font-medium">Stefan Jung</p>
+            <p class="text-text-muted text-sm">Inhaber, VMAX Süd</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Platzhalter: Sektionen 4-10 folgen in Deliverable 4-5 -->
+<section class="py-24">
+  <div class="container-vmax text-center text-text-muted">
+    <p class="label-caps">Sektionen 4–10 folgen</p>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SCROLL REVEAL + COUNTER ANIMATION
+     ============================================ -->
+<script>
+(function() {
+  // Scroll Reveal
+  const revealElements = document.querySelectorAll('[data-reveal]');
+
+  function reveal() {
+    revealElements.forEach(function(el) {
+      const top = el.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (top < windowHeight - 60) {
+        const delay = parseInt(el.dataset.delay || 0);
+        setTimeout(function() {
+          el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, delay);
+      }
+    });
+  }
+
+  // Initial state
+  revealElements.forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+  });
+
+  // Hero elements reveal on load
+  setTimeout(reveal, 100);
+  window.addEventListener('scroll', reveal, { passive: true });
+
+  // Counter Animation
+  const counters = document.querySelectorAll('[data-counter]');
+  let countersAnimated = false;
+
+  function animateCounters() {
+    if (countersAnimated) return;
+
+    counters.forEach(function(counter) {
+      const rect = counter.getBoundingClientRect();
+      if (rect.top > window.innerHeight) return;
+
+      countersAnimated = true;
+      const target = parseInt(counter.dataset.counter);
+      const valueEl = counter.querySelector('.counter-value');
+      if (!valueEl) return;
+
+      const duration = 2000;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        valueEl.textContent = Math.round(target * eased);
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    });
+  }
+
+  window.addEventListener('scroll', animateCounters, { passive: true });
+
+  // Ken Burns on hero
+  var heroImg = document.querySelector('.hero-bg-image');
+  if (heroImg) {
+    heroImg.style.transition = 'transform 15s ease-out';
+    setTimeout(function() {
+      heroImg.style.transform = 'scale(1.08)';
+    }, 200);
+  }
+})();
+</script>
 
 <%- include('../layouts/end') %>
