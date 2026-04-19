@@ -222,7 +222,7 @@
             </div>
 
             <!-- Error display -->
-            <div class="hidden mt-4 p-4 border border-red-500/30 bg-red-500/10 text-sm text-red-400" id="form-errors"></div>
+            <div class="hidden mt-4 p-4 border border-error/30 bg-error/10 text-sm text-error" id="form-errors"></div>
 
             <div class="mt-8 flex justify-between">
               <button type="button" class="btn-ghost wizard-prev" data-prev="3">Zurück</button>
@@ -369,9 +369,9 @@
 
   function highlight(id) {
     var el = document.getElementById(id);
-    el.classList.add('border-red-500');
+    el.classList.add('border-error');
     el.focus();
-    setTimeout(function() { el.classList.remove('border-red-500'); }, 2000);
+    setTimeout(function() { el.classList.remove('border-error'); }, 2000);
   }
 
   function buildSummary() {

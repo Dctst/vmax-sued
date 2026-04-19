@@ -48,20 +48,20 @@ async function sendContactMail({ vehicle, service, name, email, phone, message }
       <div style="padding: 32px; background: #141414; color: #F5F5F5;">
         <table style="width: 100%; border-collapse: collapse;">
           <tr>
-            <td colspan="2" style="padding: 8px 0; color: #E63946; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Fahrzeug</td>
+            <td colspan="2" style="padding: 8px 0; color: #F59E0B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Fahrzeug</td>
           </tr>
           <tr><td style="padding: 4px 0; color: #A8A8A8; width: 120px;">Marke</td><td style="padding: 4px 0;">${vehicle.brand}</td></tr>
           <tr><td style="padding: 4px 0; color: #A8A8A8;">Modell</td><td style="padding: 4px 0;">${vehicle.model}</td></tr>
           <tr><td style="padding: 4px 0; color: #A8A8A8;">Baujahr</td><td style="padding: 4px 0;">${vehicle.year}</td></tr>
           <tr><td style="padding: 4px 0; color: #A8A8A8;">Motor</td><td style="padding: 4px 0;">${vehicle.engine}</td></tr>
-          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #E63946; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Service</td></tr>
+          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #F59E0B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Service</td></tr>
           <tr><td colspan="2" style="padding: 4px 0;">${service}</td></tr>
-          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #E63946; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Kontakt</td></tr>
+          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #F59E0B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Kontakt</td></tr>
           <tr><td style="padding: 4px 0; color: #A8A8A8;">Name</td><td style="padding: 4px 0;">${name}</td></tr>
-          <tr><td style="padding: 4px 0; color: #A8A8A8;">E-Mail</td><td style="padding: 4px 0;"><a href="mailto:${email}" style="color: #E63946;">${email}</a></td></tr>
+          <tr><td style="padding: 4px 0; color: #A8A8A8;">E-Mail</td><td style="padding: 4px 0;"><a href="mailto:${email}" style="color: #F59E0B;">${email}</a></td></tr>
           <tr><td style="padding: 4px 0; color: #A8A8A8;">Telefon</td><td style="padding: 4px 0;">${phone || '—'}</td></tr>
           ${message ? `
-          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #E63946; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Nachricht</td></tr>
+          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #F59E0B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Nachricht</td></tr>
           <tr><td colspan="2" style="padding: 4px 0; white-space: pre-wrap;">${message}</td></tr>
           ` : ''}
         </table>

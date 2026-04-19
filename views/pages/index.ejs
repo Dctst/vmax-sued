@@ -23,9 +23,31 @@
       <span class="label-caps text-accent">Partner der VMAX Performance Gruppe · seit 1997</span>
     </div>
 
-    <h1 class="font-display text-5xl md:text-7xl lg:text-display-hero font-medium uppercase tracking-tight leading-[0.95] opacity-0" data-reveal data-delay="100">
-      Leistung<br>zum Anfassen.
+    <!-- Headline-Varianten zum Diskutieren:
+         Alt: "LEISTUNG ZUM ANFASSEN."
+         Option B: "Gemessen. Geprüft. Eingetragen."
+         Option C: "Wo Leistung Papiere hat."
+         Aktiv: "Jede Zahl. Eingetragen." -->
+    <h1 class="font-display text-5xl md:text-7xl lg:text-display-hero italic tracking-tight leading-[0.95] opacity-0" data-reveal data-delay="100">
+      Jede Zahl.<br>Eingetragen.
     </h1>
+
+    <!-- Dyno-Kurve SVG -->
+    <div class="mt-8 max-w-xl opacity-0" data-reveal data-delay="150">
+      <svg viewBox="0 0 500 120" class="w-full h-auto" id="dyno-curve" aria-hidden="true">
+        <!-- Serie (gestrichelt, grau) -->
+        <path d="M0,100 C60,98 120,85 180,70 C240,55 300,42 360,38 C400,35 440,36 500,40"
+              fill="none" stroke="#3A3A3A" stroke-width="1.5" stroke-dasharray="6,4"
+              id="dyno-stock"/>
+        <!-- Stage (Bernstein, voll) -->
+        <path d="M0,100 C60,95 120,75 180,52 C240,30 300,15 360,8 C400,4 440,5 500,10"
+              fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"
+              id="dyno-stage" style="stroke-dasharray: 620; stroke-dashoffset: 620;"/>
+        <!-- Labels -->
+        <text x="490" y="46" fill="#6B6B6B" font-size="9" font-family="Inter" text-anchor="end">Serie</text>
+        <text x="490" y="16" fill="#F59E0B" font-size="9" font-family="Inter" text-anchor="end" id="dyno-label" style="opacity:0">Stage 1</text>
+      </svg>
+    </div>
 
     <p class="mt-6 text-lg md:text-body-lg text-text-secondary max-w-2xl opacity-0" data-reveal data-delay="200">
       Einzelabstimmung. TÜV-Eintragung. Prüftechnik aus Schwaben&nbsp;— für&nbsp;Deutschland.
@@ -794,20 +816,17 @@
 
 
 <!-- ============================================
-     SCROLL REVEAL + COUNTER ANIMATION
+     SCROLL REVEAL + COUNTER + DYNO CURVE
      ============================================ -->
 <script>
 (function() {
-  // Scroll Reveal
-  const revealElements = document.querySelectorAll('[data-reveal]');
+  // --- Scroll Reveal ---
+  var revealElements = document.querySelectorAll('[data-reveal]');
 
   function reveal() {
     revealElements.forEach(function(el) {
-      const top = el.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-
-      if (top < windowHeight - 60) {
-        const delay = parseInt(el.dataset.delay || 0);
+      if (el.getBoundingClientRect().top < window.innerHeight - 60) {
+        var delay = parseInt(el.dataset.delay || 0);
         setTimeout(function() {
           el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
           el.style.opacity = '1';
@@ -817,60 +836,89 @@
     });
   }
 
-  // Initial state
   revealElements.forEach(function(el) {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
   });
 
-  // Hero elements reveal on load
   setTimeout(reveal, 100);
   window.addEventListener('scroll', reveal, { passive: true });
 
-  // Counter Animation
-  const counters = document.querySelectorAll('[data-counter]');
-  let countersAnimated = false;
+  // --- CountUp for [data-counter] (Kennzahlen) ---
+  var counterEls = document.querySelectorAll('[data-counter]');
+  var countersAnimated = false;
 
   function animateCounters() {
     if (countersAnimated) return;
-
-    counters.forEach(function(counter) {
-      const rect = counter.getBoundingClientRect();
-      if (rect.top > window.innerHeight) return;
-
+    counterEls.forEach(function(counter) {
+      if (counter.getBoundingClientRect().top > window.innerHeight) return;
       countersAnimated = true;
-      const target = parseInt(counter.dataset.counter);
-      const valueEl = counter.querySelector('.counter-value');
+      var target = parseInt(counter.dataset.counter);
+      var valueEl = counter.querySelector('.counter-value');
       if (!valueEl) return;
-
-      const duration = 2000;
-      const start = performance.now();
-
-      function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
-        const eased = 1 - Math.pow(1 - progress, 3);
-        valueEl.textContent = Math.round(target * eased);
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      }
-
-      requestAnimationFrame(update);
+      countUp(valueEl, target, 2000);
     });
   }
 
-  window.addEventListener('scroll', animateCounters, { passive: true });
+  // --- CountUp for [data-countup] (PS/Nm values anywhere) ---
+  function initCountUps() {
+    document.querySelectorAll('[data-countup]').forEach(function(el) {
+      if (el.dataset.counted) return;
+      if (el.getBoundingClientRect().top > window.innerHeight) return;
+      el.dataset.counted = '1';
+      var target = parseInt(el.dataset.countup);
+      var prefix = el.dataset.prefix || '';
+      countUp(el, target, 1500, prefix);
+    });
+  }
 
-  // Ken Burns on hero
+  function countUp(el, target, duration, prefix) {
+    var start = performance.now();
+    prefix = prefix || '';
+    function update(now) {
+      var progress = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = prefix + Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', animateCounters, { passive: true });
+  window.addEventListener('scroll', initCountUps, { passive: true });
+
+  // --- Dyno Curve Animation (scroll-triggered) ---
+  var dynoCurve = document.getElementById('dyno-stage');
+  var dynoLabel = document.getElementById('dyno-label');
+  var dynoAnimated = false;
+
+  function animateDyno() {
+    if (dynoAnimated || !dynoCurve) return;
+    var hero = document.getElementById('hero');
+    if (!hero) return;
+    var scrolled = window.pageYOffset;
+    var heroH = hero.offsetHeight;
+    // Trigger when user has scrolled 15% into hero
+    if (scrolled > heroH * 0.15) {
+      dynoAnimated = true;
+      dynoCurve.style.transition = 'stroke-dashoffset 2s ease-out';
+      dynoCurve.style.strokeDashoffset = '0';
+      if (dynoLabel) {
+        setTimeout(function() {
+          dynoLabel.style.transition = 'opacity 0.6s ease';
+          dynoLabel.style.opacity = '1';
+        }, 1800);
+      }
+    }
+  }
+
+  window.addEventListener('scroll', animateDyno, { passive: true });
+
+  // --- Ken Burns on hero ---
   var heroImg = document.querySelector('.hero-bg-image');
   if (heroImg) {
     heroImg.style.transition = 'transform 15s ease-out';
-    setTimeout(function() {
-      heroImg.style.transform = 'scale(1.08)';
-    }, 200);
+    setTimeout(function() { heroImg.style.transform = 'scale(1.08)'; }, 200);
   }
 })();
 </script>

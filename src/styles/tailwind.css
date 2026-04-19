@@ -4,10 +4,11 @@
 
 /* ============================================
    VMAX SÜD — Design System Base Styles
+   Accent: Glühdraht-Bernstein (#F59E0B)
+   Display: Fraunces (Serif) · Body: Inter · Mono: JetBrains Mono
    ============================================ */
 
 @layer base {
-  /* CSS Custom Properties for use outside Tailwind */
   :root {
     --bg-primary: #0A0A0A;
     --bg-secondary: #141414;
@@ -17,12 +18,13 @@
     --text-primary: #F5F5F5;
     --text-secondary: #A8A8A8;
     --text-muted: #6B6B6B;
-    --accent-primary: #E63946;
-    --accent-primary-hover: #C42B37;
-    --accent-dark: #8B1A22;
+    --accent: #F59E0B;
+    --accent-hover: #D97706;
+    --accent-hot: #FB923C;
+    --accent-glow: rgba(245, 158, 11, 0.15);
     --accent-success: #4ADE80;
-    --gradient-accent: linear-gradient(135deg, #E63946 0%, #8B1A22 100%);
-    --gradient-hero-overlay: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.9) 100%);
+    --error: #EF4444;
+    --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #B45309 100%);
   }
 
   html {
@@ -37,97 +39,74 @@
     overflow-x: hidden;
   }
 
-  /* Headings default to display font */
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
 
-  /* Selection color */
   ::selection {
-    background: rgba(230, 57, 70, 0.3);
+    background: rgba(245, 158, 11, 0.3);
     color: #F5F5F5;
   }
 
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0A0A0A;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #3A3A3A;
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #E63946;
-  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0A0A0A; }
+  ::-webkit-scrollbar-thumb { background: #3A3A3A; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #F59E0B; }
 }
 
 @layer components {
-  /* Container */
   .container-vmax {
     @apply mx-auto max-w-container px-6 md:px-8 lg:px-12;
   }
 
-  /* Section spacing */
   .section-spacing {
     @apply py-section-mobile lg:py-section;
   }
 
-  /* Caption / Label style */
   .label-caps {
-    @apply text-caption uppercase tracking-[0.15em] font-medium text-text-muted;
+    @apply text-caption uppercase tracking-[0.15em] font-medium text-text-muted font-sans;
   }
 
-  /* CTA Primary */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-medium
-           text-base tracking-wide transition-all duration-300
+    @apply inline-flex items-center gap-2 px-8 py-4 bg-accent font-sans
+           text-bg-primary font-semibold text-base tracking-wide transition-all duration-300
            hover:bg-accent-hover active:scale-[0.98];
   }
 
-  /* CTA Ghost */
   .btn-ghost {
     @apply inline-flex items-center gap-2 px-8 py-4 border border-border-strong
-           text-text-primary font-medium text-base tracking-wide
+           text-text-primary font-sans font-medium text-base tracking-wide
            transition-all duration-300 hover:border-text-secondary
            hover:text-white active:scale-[0.98];
   }
 
-  /* Card base */
   .card {
     @apply bg-bg-tertiary border border-border-subtle p-card-inner
            transition-all duration-400 hover:-translate-y-1
            hover:border-accent/30;
   }
 
-  /* Mono numbers (PS, Nm values) */
   .mono-value {
     @apply font-mono text-accent font-medium;
   }
 
-  /* Divider line */
   .divider {
     @apply border-t border-border-subtle;
   }
 
-  /* Full-bleed section */
   .full-bleed {
     @apply w-screen relative left-1/2 right-1/2 -mx-[50vw];
   }
 }
 
 @layer utilities {
-  /* Text gradient for special headings */
   .text-gradient-accent {
-    background: linear-gradient(135deg, #E63946 0%, #8B1A22 100%);
+    background: linear-gradient(135deg, #F59E0B 0%, #B45309 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Hide scrollbar for horizontal scroll galleries */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;

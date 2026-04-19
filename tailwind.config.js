@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
-      display: ['"Neue Haas Grotesk Display"', '"Inter"', 'system-ui', 'sans-serif'],
+      display: ['"Fraunces"', '"Georgia"', 'serif'],
       mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
     },
     extend: {
@@ -27,16 +27,18 @@ module.exports = {
           muted: '#6B6B6B',
         },
         accent: {
-          DEFAULT: '#E63946',
-          hover: '#C42B37',
-          dark: '#8B1A22',
+          DEFAULT: '#F59E0B',
+          hover: '#D97706',
+          hot: '#FB923C',
+          glow: 'rgba(245, 158, 11, 0.15)',
           success: '#4ADE80',
         },
+        error: '#EF4444',
       },
       fontSize: {
-        'display-hero': ['96px', { lineHeight: '100px', letterSpacing: '-0.03em', fontWeight: '500' }],
-        'display-section': ['64px', { lineHeight: '72px', letterSpacing: '-0.02em', fontWeight: '500' }],
-        'display-card': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'display-hero': ['96px', { lineHeight: '100px', letterSpacing: '-0.02em', fontWeight: '400' }],
+        'display-section': ['64px', { lineHeight: '72px', letterSpacing: '-0.015em', fontWeight: '400' }],
+        'display-card': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '400' }],
         'body-lg': ['20px', { lineHeight: '32px' }],
         'body': ['16px', { lineHeight: '28px' }],
         'caption': ['12px', { lineHeight: '16px', letterSpacing: '0.15em', fontWeight: '500' }],
@@ -54,7 +56,7 @@ module.exports = {
         'grid': '24px',
       },
       backgroundImage: {
-        'gradient-accent': 'linear-gradient(135deg, #E63946 0%, #8B1A22 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #F59E0B 0%, #B45309 100%)',
         'gradient-hero': 'linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.9) 100%)',
       },
       gridTemplateColumns: {
