@@ -1,0 +1,47 @@
+<%- include('../layouts/main') %>
+
+<!-- ============================================
+     HERO — 100vh
+     ============================================ -->
+<section class="relative h-screen flex items-end pb-20 lg:pb-24">
+  <!-- Background (Platzhalter — später echtes Prüfstand-Foto) -->
+  <div class="absolute inset-0 bg-bg-secondary">
+    <div class="absolute inset-0 bg-gradient-hero z-10"></div>
+  </div>
+
+  <div class="container-vmax relative z-20">
+    <!-- Trust Badge -->
+    <p class="label-caps text-accent mb-6">Partner der VMAX Performance Gruppe · seit 1997</p>
+
+    <h1 class="font-display text-5xl md:text-7xl lg:text-display-hero font-medium uppercase tracking-tight leading-none">
+      Leistung<br>zum Anfassen.
+    </h1>
+    <p class="mt-6 text-lg md:text-body-lg text-text-secondary max-w-2xl">
+      Einzelabstimmung. TÜV-Eintragung. Prüftechnik aus Schwaben&nbsp;— für Deutschland.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 mt-10">
+      <a href="/kontakt" class="btn-primary">
+        Termin anfragen
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="#leistungen" class="btn-ghost">
+        Leistungsspektrum ansehen
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-text-muted">
+    <span class="font-mono text-xs tracking-widest">scroll</span>
+    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7"/></svg>
+  </div>
+</section>
+
+<!-- Platzhalter: Sektionen 2-10 folgen in Deliverable 3-5 -->
+<section class="section-spacing">
+  <div class="container-vmax text-center text-text-muted">
+    <p class="label-caps">Weitere Sektionen folgen</p>
+  </div>
+</section>
+
+<%- include('../layouts/end') %>

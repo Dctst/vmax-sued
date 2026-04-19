@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : 'VMAX Süd' %></title>
+  <meta name="description" content="<%= typeof description !== 'undefined' ? description : '' %>">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%= typeof title !== 'undefined' ? title : 'VMAX Süd' %>">
+  <meta property="og:description" content="<%= typeof description !== 'undefined' ? description : '' %>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<%= siteUrl %><%= currentPath %>">
+  <meta property="og:site_name" content="VMAX Süd">
+  <meta property="og:locale" content="de_DE">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= typeof title !== 'undefined' ? title : 'VMAX Süd' %>">
+  <meta name="twitter:description" content="<%= typeof description !== 'undefined' ? description : '' %>">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="<%= siteUrl %><%= currentPath === '/' ? '' : currentPath %>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "AutoRepair"],
+    "name": "VMAX Süd",
+    "description": "Chiptuning, Leistungssteigerung und TÜV-Eintragung in Westendorf bei Augsburg.",
+    "url": "<%= siteUrl %>",
+    "telephone": "<%= phone %>",
+    "email": "<%= email %>",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "<%= address.street %>",
+      "addressLocality": "<%= address.city %>",
+      "postalCode": "<%= address.zip %>",
+      "addressRegion": "Bayern",
+      "addressCountry": "DE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "08:00",
+        "closes": "17:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:30",
+        "closes": "12:00"
+      }
+    ],
+    "sameAs": ["<%= social.facebook %>","<%= social.instagram %>"]
+  }
+  </script>
+</head>
+<body class="bg-bg-primary text-text-primary">
+  <%- include('../partials/header') %>
+  <main>

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Markus W.",
+    "vehicle": "VW Golf 7 GTI",
+    "rating": 5,
+    "text": "Professionelle Beratung, saubere Arbeit am Prüfstand und ein spürbares Ergebnis. Stefan hat sich wirklich Zeit genommen, alles zu erklären. Die TÜV-Eintragung lief reibungslos.",
+    "source": "Google",
+    "date": "2024-11"
+  },
+  {
+    "name": "Thomas K.",
+    "vehicle": "Audi RS3 8V",
+    "rating": 5,
+    "text": "Endlich ein Tuner, der nicht nur Versprechen macht, sondern liefert. Vorher-Nachher-Messung am Prüfstand, alles dokumentiert. So muss das sein.",
+    "source": "Google",
+    "date": "2024-09"
+  },
+  {
+    "name": "Sandra M.",
+    "vehicle": "VW Tiguan 2.0 TDI",
+    "rating": 5,
+    "text": "Auch als Nicht-Tuning-Enthusiastin wurde ich ernst genommen. Klare Empfehlung für alle, die mehr aus ihrem Fahrzeug herausholen wollen — legal und sauber.",
+    "source": "Facebook",
+    "date": "2024-08"
+  }
+]

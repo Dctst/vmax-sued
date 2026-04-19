@@ -1,0 +1,36 @@
+{
+  "name": "vmax-sued",
+  "version": "1.0.0",
+  "description": "VMAX Süd — Einzelabstimmung & TÜV-Kompetenz aus Schwaben",
+  "main": "server.js",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon server.js",
+    "start": "NODE_ENV=production node server.js",
+    "build:css": "tailwindcss -i ./src/styles/tailwind.css -o ./public/css/main.css --minify",
+    "watch:css": "tailwindcss -i ./src/styles/tailwind.css -o ./public/css/main.css --watch",
+    "generate:sitemap": "node scripts/generate-sitemap.js",
+    "generate:vehicles": "node scripts/generate-vehicle-pages.js",
+    "generate:cities": "node scripts/generate-city-pages.js"
+  },
+  "keywords": ["chiptuning", "tuning", "augsburg", "vmax"],
+  "author": "VMAX Süd",
+  "license": "PRIVATE",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.1",
+    "helmet": "^8.0.0",
+    "nodemailer": "^6.9.15"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "nodemon": "^3.1.7",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

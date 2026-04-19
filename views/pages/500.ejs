@@ -1,0 +1,17 @@
+<%- include('../layouts/main') %>
+
+<section class="min-h-screen flex items-center justify-center">
+  <div class="text-center">
+    <p class="font-mono text-8xl text-accent font-medium">500</p>
+    <h1 class="font-display text-display-card mt-6">Ein Fehler ist aufgetreten</h1>
+    <p class="text-text-secondary mt-4 max-w-md mx-auto">
+      Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
+      <a href="/" class="btn-primary">Zur Startseite</a>
+      <a href="tel:<%= phone %>" class="btn-ghost"><%= phone %></a>
+    </div>
+  </div>
+</section>
+
+<%- include('../layouts/end') %>

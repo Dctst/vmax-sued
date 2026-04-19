@@ -1,0 +1,22 @@
+[
+  { "slug": "augsburg", "name": "Augsburg", "distance": "15 km", "driveTime": "20 Min." },
+  { "slug": "friedberg", "name": "Friedberg", "distance": "18 km", "driveTime": "20 Min." },
+  { "slug": "stadtbergen", "name": "Stadtbergen", "distance": "12 km", "driveTime": "15 Min." },
+  { "slug": "neusaess", "name": "Neusäß", "distance": "10 km", "driveTime": "12 Min." },
+  { "slug": "kissing", "name": "Kissing", "distance": "22 km", "driveTime": "25 Min." },
+  { "slug": "koenigsbrunn", "name": "Königsbrunn", "distance": "20 km", "driveTime": "22 Min." },
+  { "slug": "gersthofen", "name": "Gersthofen", "distance": "8 km", "driveTime": "10 Min." },
+  { "slug": "diedorf", "name": "Diedorf", "distance": "6 km", "driveTime": "8 Min." },
+  { "slug": "dasing", "name": "Dasing", "distance": "25 km", "driveTime": "25 Min." },
+  { "slug": "mering", "name": "Mering", "distance": "20 km", "driveTime": "22 Min." },
+  { "slug": "bobingen", "name": "Bobingen", "distance": "18 km", "driveTime": "20 Min." },
+  { "slug": "landsberg", "name": "Landsberg am Lech", "distance": "40 km", "driveTime": "35 Min." },
+  { "slug": "donauwoerth", "name": "Donauwörth", "distance": "45 km", "driveTime": "40 Min." },
+  { "slug": "dillingen", "name": "Dillingen an der Donau", "distance": "55 km", "driveTime": "45 Min." },
+  { "slug": "guenzburg", "name": "Günzburg", "distance": "60 km", "driveTime": "45 Min." },
+  { "slug": "memmingen", "name": "Memmingen", "distance": "90 km", "driveTime": "60 Min." },
+  { "slug": "ulm", "name": "Ulm", "distance": "85 km", "driveTime": "55 Min." },
+  { "slug": "kempten", "name": "Kempten", "distance": "110 km", "driveTime": "75 Min." },
+  { "slug": "ingolstadt", "name": "Ingolstadt", "distance": "80 km", "driveTime": "55 Min." },
+  { "slug": "muenchen", "name": "München", "distance": "75 km", "driveTime": "50 Min." }
+]

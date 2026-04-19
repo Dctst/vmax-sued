@@ -1,0 +1,157 @@
+[
+  {
+    "slug": "vw-golf-7-gti",
+    "brand": "Volkswagen",
+    "model": "Golf 7 GTI",
+    "engine": "2.0 TSI EA888",
+    "year": "2012–2020",
+    "stock": { "ps": 230, "nm": 350 },
+    "stage1": { "ps": 300, "nm": 420 },
+    "stage2": { "ps": 340, "nm": 460 },
+    "image": "/images/vehicles/golf-7-gti.webp"
+  },
+  {
+    "slug": "vw-golf-8-r",
+    "brand": "Volkswagen",
+    "model": "Golf 8 R",
+    "engine": "2.0 TSI EA888 evo4",
+    "year": "2020–",
+    "stock": { "ps": 320, "nm": 420 },
+    "stage1": { "ps": 400, "nm": 500 },
+    "stage2": { "ps": 440, "nm": 540 },
+    "image": "/images/vehicles/golf-8-r.webp"
+  },
+  {
+    "slug": "vw-tiguan-r",
+    "brand": "Volkswagen",
+    "model": "Tiguan R",
+    "engine": "2.0 TSI",
+    "year": "2020–",
+    "stock": { "ps": 320, "nm": 420 },
+    "stage1": { "ps": 390, "nm": 490 },
+    "image": "/images/vehicles/tiguan-r.webp"
+  },
+  {
+    "slug": "audi-rs3-8v",
+    "brand": "Audi",
+    "model": "RS3 8V",
+    "engine": "2.5 TFSI DAZA",
+    "year": "2017–2020",
+    "stock": { "ps": 400, "nm": 480 },
+    "stage1": { "ps": 460, "nm": 560 },
+    "stage2": { "ps": 520, "nm": 620 },
+    "image": "/images/vehicles/audi-rs3-8v.webp"
+  },
+  {
+    "slug": "audi-s4-b9",
+    "brand": "Audi",
+    "model": "S4 B9",
+    "engine": "3.0 TDI",
+    "year": "2019–",
+    "stock": { "ps": 347, "nm": 700 },
+    "stage1": { "ps": 400, "nm": 780 },
+    "image": "/images/vehicles/audi-s4-b9.webp"
+  },
+  {
+    "slug": "audi-ttrs-8s",
+    "brand": "Audi",
+    "model": "TT RS 8S",
+    "engine": "2.5 TFSI DAZA",
+    "year": "2016–",
+    "stock": { "ps": 400, "nm": 480 },
+    "stage1": { "ps": 460, "nm": 560 },
+    "stage2": { "ps": 530, "nm": 630 },
+    "image": "/images/vehicles/audi-ttrs-8s.webp"
+  },
+  {
+    "slug": "vw-golf-7-r",
+    "brand": "Volkswagen",
+    "model": "Golf 7 R",
+    "engine": "2.0 TSI EA888",
+    "year": "2013–2020",
+    "stock": { "ps": 310, "nm": 400 },
+    "stage1": { "ps": 380, "nm": 470 },
+    "stage2": { "ps": 420, "nm": 520 },
+    "image": "/images/vehicles/golf-7-r.webp"
+  },
+  {
+    "slug": "audi-a4-b9-20-tdi",
+    "brand": "Audi",
+    "model": "A4 B9 2.0 TDI",
+    "engine": "2.0 TDI",
+    "year": "2015–",
+    "stock": { "ps": 190, "nm": 400 },
+    "stage1": { "ps": 230, "nm": 470 },
+    "image": "/images/vehicles/audi-a4-b9.webp"
+  },
+  {
+    "slug": "vw-t-roc-r",
+    "brand": "Volkswagen",
+    "model": "T-Roc R",
+    "engine": "2.0 TSI",
+    "year": "2019–",
+    "stock": { "ps": 300, "nm": 400 },
+    "stage1": { "ps": 370, "nm": 470 },
+    "image": "/images/vehicles/t-roc-r.webp"
+  },
+  {
+    "slug": "seat-leon-cupra-5f",
+    "brand": "SEAT",
+    "model": "Leon Cupra 5F",
+    "engine": "2.0 TSI EA888",
+    "year": "2014–2020",
+    "stock": { "ps": 300, "nm": 380 },
+    "stage1": { "ps": 370, "nm": 460 },
+    "image": "/images/vehicles/leon-cupra-5f.webp"
+  },
+  {
+    "slug": "skoda-octavia-rs-245",
+    "brand": "Škoda",
+    "model": "Octavia RS 245",
+    "engine": "2.0 TSI EA888",
+    "year": "2017–2020",
+    "stock": { "ps": 245, "nm": 370 },
+    "stage1": { "ps": 310, "nm": 440 },
+    "image": "/images/vehicles/octavia-rs-245.webp"
+  },
+  {
+    "slug": "audi-sq5-fy",
+    "brand": "Audi",
+    "model": "SQ5 FY",
+    "engine": "3.0 TDI",
+    "year": "2019–",
+    "stock": { "ps": 347, "nm": 700 },
+    "stage1": { "ps": 410, "nm": 800 },
+    "image": "/images/vehicles/audi-sq5-fy.webp"
+  },
+  {
+    "slug": "vw-golf-8-gti",
+    "brand": "Volkswagen",
+    "model": "Golf 8 GTI",
+    "engine": "2.0 TSI EA888 evo4",
+    "year": "2020–",
+    "stock": { "ps": 245, "nm": 370 },
+    "stage1": { "ps": 310, "nm": 440 },
+    "image": "/images/vehicles/golf-8-gti.webp"
+  },
+  {
+    "slug": "audi-rs-q3-f3",
+    "brand": "Audi",
+    "model": "RS Q3 F3",
+    "engine": "2.5 TFSI",
+    "year": "2019–",
+    "stock": { "ps": 400, "nm": 480 },
+    "stage1": { "ps": 460, "nm": 560 },
+    "image": "/images/vehicles/audi-rsq3-f3.webp"
+  },
+  {
+    "slug": "cupra-formentor-vz",
+    "brand": "CUPRA",
+    "model": "Formentor VZ",
+    "engine": "2.0 TSI",
+    "year": "2020–",
+    "stock": { "ps": 310, "nm": 400 },
+    "stage1": { "ps": 380, "nm": 480 },
+    "image": "/images/vehicles/cupra-formentor-vz.webp"
+  }
+]
