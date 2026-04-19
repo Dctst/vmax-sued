@@ -1,10 +1,71 @@
 <%- include('../layouts/main') %>
 
-<section class="pt-32 section-spacing">
-  <div class="container-vmax">
-    <p class="label-caps text-accent mb-4">VMAX Süd</p>
-    <h1 class="font-display text-4xl md:text-display-section font-medium uppercase tracking-tight"><%= title.split(' — ')[0] %></h1>
-    <p class="text-text-secondary mt-6">Diese Seite wird in den nächsten Deliverables ausgebaut.</p>
+<section class="pt-32 pb-12 lg:pt-40 lg:pb-16">
+  <div class="container-vmax max-w-3xl">
+    <h1 class="font-display text-4xl md:text-display-card font-medium uppercase tracking-tight">Impressum</h1>
+  </div>
+</section>
+
+<section class="pb-section-mobile lg:pb-section">
+  <div class="container-vmax max-w-3xl">
+    <div class="space-y-8 text-text-secondary text-base leading-relaxed">
+
+      <div>
+        <h2 class="font-display text-lg font-medium uppercase tracking-tight text-text-primary mb-3">Angaben gemäß §&thinsp;5 TMG</h2>
+        <p>
+          VMAX Süd<br>
+          Inhaber: Stefan Jung<br>
+          <%= address.street %><br>
+          <%= address.access %><br>
+          <%= address.zip %> <%= address.city %>
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-lg font-medium uppercase tracking-tight text-text-primary mb-3">Kontakt</h2>
+        <p>
+          Telefon: <a href="tel:<%= phone %>" class="text-accent hover:underline"><%= phone %></a><br>
+          E-Mail: <a href="mailto:<%= email %>" class="text-accent hover:underline"><%= email %></a>
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-lg font-medium uppercase tracking-tight text-text-primary mb-3">Umsatzsteuer-ID</h2>
+        <p>
+          Umsatzsteuer-Identifikationsnummer gemäß §&thinsp;27a Umsatzsteuergesetz:<br>
+          <span class="text-text-muted">[Wird von Stefan Jung nachgeliefert]</span>
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-lg font-medium uppercase tracking-tight text-text-primary mb-3">Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+        <p>
+          <span class="text-text-muted">[Wird von Stefan Jung nachgeliefert, falls zutreffend]</span>
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-lg font-medium uppercase tracking-tight text-text-primary mb-3">Streitschlichtung</h2>
+        <p>
+          Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-lg font-medium uppercase tracking-tight text-text-primary mb-3">Haftung für Inhalte</h2>
+        <p>
+          Als Diensteanbieter sind wir gemäß §&thinsp;7 Abs.&thinsp;1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§&thinsp;8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-lg font-medium uppercase tracking-tight text-text-primary mb-3">Haftung für Links</h2>
+        <p>
+          Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+        </p>
+      </div>
+
+    </div>
   </div>
 </section>
 

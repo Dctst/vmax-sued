@@ -1,10 +1,125 @@
 <%- include('../layouts/main') %>
 
-<section class="pt-32 section-spacing">
+<!-- Hero -->
+<section class="pt-32 pb-12 lg:pt-40 lg:pb-16">
   <div class="container-vmax">
-    <p class="label-caps text-accent mb-4">VMAX Süd</p>
-    <h1 class="font-display text-4xl md:text-display-section font-medium uppercase tracking-tight"><%= title.split(' — ')[0] %></h1>
-    <p class="text-text-secondary mt-6">Diese Seite wird in den nächsten Deliverables ausgebaut.</p>
+    <nav class="mb-8 text-sm text-text-muted" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-text-secondary transition-colors">Start</a>
+      <span class="mx-2">/</span>
+      <span class="text-text-secondary">Über uns</span>
+    </nav>
+    <span class="label-caps text-accent block mb-4">Über uns</span>
+    <h1 class="font-display text-4xl md:text-5xl lg:text-display-section font-medium uppercase tracking-tight leading-[1.05]">
+      Wer hinter VMAX Süd steht.
+    </h1>
+  </div>
+</section>
+
+<!-- Stefan Jung Portrait -->
+<section class="pb-section-mobile lg:pb-section">
+  <div class="container-vmax">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <!-- Foto -->
+      <div class="lg:col-span-5">
+        <div class="border border-border-subtle bg-bg-tertiary overflow-hidden">
+          <div class="aspect-[3/4] bg-bg-secondary flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="w-24 h-24 mx-auto rounded-full bg-bg-tertiary border border-border-subtle flex items-center justify-center mb-4">
+                <span class="font-display text-3xl font-medium text-accent">SJ</span>
+              </div>
+              <p class="text-text-muted text-sm">Portraitfoto wird nachgeliefert</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="font-display text-xl font-medium uppercase tracking-tight">Stefan Jung</p>
+            <p class="text-text-muted text-sm mt-1">Inhaber & Prüfstandtechniker</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="lg:col-span-7">
+        <div class="space-y-6 text-text-secondary text-lg leading-relaxed">
+          <p>
+            VMAX Süd ist kein anonymes Unternehmen mit wechselnden Ansprechpartnern. Wenn Sie hier anrufen, geht Stefan Jung ran. Wenn Ihr Fahrzeug auf dem Prüfstand steht, sitzt Stefan Jung am Rechner. Und wenn Sie eine ehrliche Einschätzung brauchen, ob sich ein Tuning lohnt, bekommen Sie genau die — von Stefan Jung persönlich.
+          </p>
+          <p>
+            Als Einzelabstimmungs- und Vertriebspartner der VMAX Performance Gruppe bringt Stefan das technische Know-how eines bundesweiten Netzwerks mit der persönlichen Betreuung eines inhabergeführten Betriebs zusammen. Das ist kein Widerspruch — das ist der Punkt.
+          </p>
+
+          <h2 class="font-display text-2xl md:text-display-card font-medium uppercase tracking-tight text-text-primary pt-4">
+            Philosophie
+          </h2>
+          <p>
+            Tuning bedeutet Verantwortung. Jedes Fahrzeug, das unsere Werkstatt verlässt, muss sicher sein, legal sein und den Besitzer glücklich machen. In dieser Reihenfolge.
+          </p>
+          <p>
+            Wir machen keine Versprechen, die wir nicht halten können. Wir verkaufen keine Leistung, die der Motor nicht verträgt. Und wir schicken niemanden ohne Eintragung auf die Straße, nur weil es billiger wäre.
+          </p>
+
+          <h2 class="font-display text-2xl md:text-display-card font-medium uppercase tracking-tight text-text-primary pt-4">
+            Der Standort
+          </h2>
+          <p>
+            Unsere Werkstatt liegt in Westendorf, wenige Kilometer westlich von Augsburg. Gartenstraße 8, Zufahrt über Bachstraße 7. Kein Hochglanz-Showroom — aber ein professionell ausgestatteter Prüfstand, saubere Arbeitsbedingungen und Platz für Ihr Fahrzeug.
+          </p>
+        </div>
+
+        <!-- Facts -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+          <div class="border border-border-subtle p-4 text-center bg-bg-tertiary">
+            <p class="font-mono text-2xl text-accent font-medium">1on1</p>
+            <p class="text-text-muted text-xs uppercase tracking-wider mt-1">Betreuung</p>
+          </div>
+          <div class="border border-border-subtle p-4 text-center bg-bg-tertiary">
+            <p class="font-mono text-2xl text-accent font-medium">28+</p>
+            <p class="text-text-muted text-xs uppercase tracking-wider mt-1">Jahre Netzwerk</p>
+          </div>
+          <div class="border border-border-subtle p-4 text-center bg-bg-tertiary">
+            <p class="font-mono text-2xl text-accent font-medium">80%</p>
+            <p class="text-text-muted text-xs uppercase tracking-wider mt-1">Abdeckung</p>
+          </div>
+          <div class="border border-border-subtle p-4 text-center bg-bg-tertiary">
+            <p class="font-mono text-2xl text-accent font-medium">100%</p>
+            <p class="text-text-muted text-xs uppercase tracking-wider mt-1">Einzelabstimmung</p>
+          </div>
+        </div>
+
+        <!-- Kontakt -->
+        <div class="mt-12 pt-8 border-t border-border-subtle">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/kontakt" class="btn-primary">
+              Termin bei Stefan anfragen
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="tel:<%= phone %>" class="btn-ghost">Direkt anrufen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Werkstatt-Impressionen -->
+<section class="section-spacing bg-bg-secondary">
+  <div class="container-vmax">
+    <span class="label-caps text-accent block mb-4">Werkstatt</span>
+    <h2 class="font-display text-2xl md:text-display-card font-medium uppercase tracking-tight mb-10">
+      Ein Blick hinter die Kulissen.
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="aspect-[4/3] bg-bg-tertiary border border-border-subtle flex items-center justify-center">
+        <p class="text-text-muted text-sm">Werkstattfoto 1</p>
+      </div>
+      <div class="aspect-[4/3] bg-bg-tertiary border border-border-subtle flex items-center justify-center">
+        <p class="text-text-muted text-sm">Werkstattfoto 2</p>
+      </div>
+      <div class="aspect-[4/3] bg-bg-tertiary border border-border-subtle flex items-center justify-center">
+        <p class="text-text-muted text-sm">Werkstattfoto 3</p>
+      </div>
+    </div>
+    <p class="text-text-muted text-sm mt-6">Echte Werkstattfotos werden nachgeliefert.</p>
   </div>
 </section>
 
