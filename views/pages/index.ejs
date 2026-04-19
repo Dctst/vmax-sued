@@ -1,111 +1,214 @@
 <%- include('../layouts/main') %>
 
 <!-- ============================================
-     SEKTION 1 — HERO (100vh)
+     SEKTION 1 — HERO
+     Schwarzer Grund + Dyno-Hintergrund + Tech-Panel
      ============================================ -->
-<section class="relative h-screen flex items-end pb-20 lg:pb-24 overflow-hidden" id="hero">
-  <!-- Background mit Ken-Burns-Effekt -->
-  <div class="absolute inset-0">
-    <div class="absolute inset-0 bg-bg-secondary hero-bg-image"
-         style="background-image: url('https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=1920&q=80');
-                background-size: cover; background-position: center;">
-    </div>
-    <!-- Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/60 to-bg-primary/20 z-10"></div>
-    <!-- Zusätzlicher Bottom-Gradient für nahtlosen Übergang -->
-    <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg-primary to-transparent z-10"></div>
+<section class="relative min-h-screen flex items-center overflow-hidden" id="hero">
+  <!-- Background: Dyno curve as ambient element -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <svg viewBox="0 0 1440 600" class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
+      <path d="M0,500 C200,490 400,400 600,300 C800,200 1000,100 1200,60 C1300,40 1400,45 1440,50"
+            fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.08"
+            id="hero-dyno-bg" style="stroke-dasharray: 1800; stroke-dashoffset: 1800;"/>
+    </svg>
   </div>
 
-  <div class="container-vmax relative z-20">
-    <!-- Trust Badge -->
-    <div class="inline-flex items-center gap-2 mb-8 opacity-0" data-reveal>
-      <span class="w-8 h-px bg-accent"></span>
-      <span class="label-caps text-accent">Partner der VMAX Performance Gruppe · seit 1997</span>
-    </div>
+  <!-- Coordinate markers -->
+  <div class="absolute top-6 left-6 lg:top-8 lg:left-12 z-20 font-micro text-[9px] text-text-muted/30 tracking-widest">
+    48.4267°N / 10.8742°E
+  </div>
+  <div class="absolute top-6 right-6 lg:top-8 lg:right-12 z-20 font-micro text-[9px] text-text-muted/30 tracking-widest">
+    VMAX-SUED/WSDF
+  </div>
 
-    <!-- Headline-Varianten zum Diskutieren:
-         Alt: "LEISTUNG ZUM ANFASSEN."
-         Option B: "Gemessen. Geprüft. Eingetragen."
-         Option C: "Wo Leistung Papiere hat."
-         Aktiv: "Jede Zahl. Eingetragen." -->
-    <h1 class="font-display text-5xl md:text-7xl lg:text-display-hero italic tracking-tight leading-[0.95] opacity-0" data-reveal data-delay="100">
-      Jede Zahl.<br>Eingetragen.
-    </h1>
+  <div class="container-vmax relative z-20 py-32 lg:py-40">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-    <!-- Dyno-Kurve SVG -->
-    <div class="mt-8 max-w-xl opacity-0" data-reveal data-delay="150">
-      <svg viewBox="0 0 500 120" class="w-full h-auto" id="dyno-curve" aria-hidden="true">
-        <!-- Serie (gestrichelt, grau) -->
-        <path d="M0,100 C60,98 120,85 180,70 C240,55 300,42 360,38 C400,35 440,36 500,40"
-              fill="none" stroke="#3A3A3A" stroke-width="1.5" stroke-dasharray="6,4"
-              id="dyno-stock"/>
-        <!-- Stage (Bernstein, voll) -->
-        <path d="M0,100 C60,95 120,75 180,52 C240,30 300,15 360,8 C400,4 440,5 500,10"
-              fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"
-              id="dyno-stage" style="stroke-dasharray: 620; stroke-dashoffset: 620;"/>
-        <!-- Labels -->
-        <text x="490" y="46" fill="#6B6B6B" font-size="9" font-family="Inter" text-anchor="end">Serie</text>
-        <text x="490" y="16" fill="#F59E0B" font-size="9" font-family="Inter" text-anchor="end" id="dyno-label" style="opacity:0">Stage 1</text>
-      </svg>
-    </div>
+      <!-- Links: Headline + CTAs (60%) -->
+      <div class="lg:col-span-7">
+        <!-- Eyebrow -->
+        <p class="font-micro text-micro uppercase text-text-muted/60 tracking-[0.15em] mb-6 opacity-0" data-reveal>
+          VMAX SÜD · EST. 2011 · WESTENDORF
+        </p>
 
-    <p class="mt-6 text-lg md:text-body-lg text-text-secondary max-w-2xl opacity-0" data-reveal data-delay="200">
-      Einzelabstimmung. TÜV-Eintragung. Prüftechnik aus Schwaben&nbsp;— für&nbsp;Deutschland.
-    </p>
+        <!-- Headline-Varianten:
+             Alt: "LEISTUNG ZUM ANFASSEN."
+             Option B: "Gemessen. Geprüft. Eingetragen."
+             Option C: "Wo Leistung Papiere hat."
+             Aktiv: "Jede Zahl. Eingetragen." -->
+        <h1 class="font-display text-display-hero italic leading-[1.05] opacity-0" data-reveal data-delay="80">
+          Jede Zahl.<br>Eingetragen.
+        </h1>
 
-    <div class="flex flex-col sm:flex-row gap-4 mt-10 opacity-0" data-reveal data-delay="300">
-      <a href="/kontakt" class="btn-primary">
-        Termin anfragen
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </a>
-      <a href="#leistungen" class="btn-ghost">
-        Leistungsspektrum ansehen
-      </a>
+        <p class="mt-6 text-lg text-text-secondary max-w-lg opacity-0" data-reveal data-delay="160">
+          Einzelabstimmung. TÜV-Eintragung. Prüftechnik aus Schwaben&nbsp;— für&nbsp;Deutschland.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-10 opacity-0" data-reveal data-delay="240">
+          <a href="/kontakt" class="btn-primary">
+            Termin anfragen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#leistungen" class="btn-ghost">
+            Leistungsspektrum
+          </a>
+        </div>
+
+        <!-- Trust markers -->
+        <div class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 font-micro text-[9px] text-text-muted/50 uppercase tracking-[0.1em] opacity-0" data-reveal data-delay="320">
+          <span>TÜV-Eintragung</span><span class="text-accent/40">·</span>
+          <span>Einzelabstimmung</span><span class="text-accent/40">·</span>
+          <span>Prüfstand</span><span class="text-accent/40">·</span>
+          <span>Seit 2011</span>
+        </div>
+      </div>
+
+      <!-- Rechts: Technisches Panel (40%) -->
+      <div class="lg:col-span-5 opacity-0" data-reveal data-delay="200">
+        <div class="border border-border-subtle bg-bg-primary/50 backdrop-blur-sm relative">
+          <!-- Corner brackets -->
+          <div class="absolute -top-px -left-px w-5 h-5 border-t border-l border-border-strong"></div>
+          <div class="absolute -top-px -right-px w-5 h-5 border-t border-r border-border-strong"></div>
+          <div class="absolute -bottom-px -left-px w-5 h-5 border-b border-l border-border-strong"></div>
+          <div class="absolute -bottom-px -right-px w-5 h-5 border-b border-r border-border-strong"></div>
+
+          <!-- Panel Header -->
+          <div class="px-6 py-3 border-b border-border-subtle flex items-center justify-between">
+            <span class="font-micro text-[9px] text-text-muted uppercase tracking-[0.12em]">Leistungsnachweis · #A847</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-success animate-glow-pulse"></span>
+          </div>
+
+          <!-- Panel Content -->
+          <div class="p-6 space-y-5">
+            <!-- Vorher/Nachher -->
+            <div>
+              <p class="font-micro text-[9px] text-text-muted uppercase tracking-[0.12em] mb-3">Beispiel · VW Golf 7 GTI · 2.0 TSI</p>
+              <div class="flex items-end gap-4">
+                <div>
+                  <p class="font-micro text-[8px] text-text-muted uppercase tracking-widest">Serie</p>
+                  <p class="font-mono text-2xl text-text-secondary">230 <span class="text-xs text-text-muted">PS</span></p>
+                </div>
+                <svg class="w-6 h-6 text-accent mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                <div>
+                  <p class="font-micro text-[8px] text-accent uppercase tracking-widest">Stage 1</p>
+                  <p class="font-mono text-2xl text-text-primary">300 <span class="text-xs text-text-muted">PS</span></p>
+                </div>
+                <div class="ml-auto">
+                  <p class="font-mono text-lg text-accent">+70</p>
+                  <p class="font-micro text-[8px] text-text-muted uppercase">PS Gain</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini Dyno Curve -->
+            <div class="border-t border-border-subtle pt-4">
+              <svg viewBox="0 0 300 60" class="w-full h-auto" aria-hidden="true">
+                <path d="M0,50 C40,48 80,42 120,34 C160,26 200,20 240,18 C270,17 290,18 300,19" fill="none" stroke="#3A3A3A" stroke-width="1" stroke-dasharray="4,3"/>
+                <path d="M0,50 C40,46 80,36 120,24 C160,13 200,6 240,3 C270,1 290,2 300,3" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"
+                      id="dyno-stage" style="stroke-dasharray: 380; stroke-dashoffset: 380;"/>
+                <text x="290" y="24" fill="#6B6B6B" font-size="7" font-family="Space Mono" text-anchor="end">SERIE</text>
+                <text x="290" y="8" fill="#F59E0B" font-size="7" font-family="Space Mono" text-anchor="end" id="dyno-label" style="opacity:0">STG1</text>
+              </svg>
+            </div>
+
+            <!-- TÜV Status -->
+            <div class="flex items-center justify-between pt-2 border-t border-border-subtle">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent-success"></span>
+                <span class="font-micro text-[9px] text-accent-success uppercase tracking-[0.1em]">TÜV-eingetragen</span>
+              </div>
+              <span class="font-micro text-[8px] text-text-muted/50 tracking-wider">Gutachten 4821/24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <!-- Scroll Indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-text-muted opacity-0" data-reveal data-delay="600">
-    <span class="font-mono text-[10px] tracking-[0.2em] uppercase">scroll</span>
-    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7"/></svg>
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-text-muted/40 opacity-0" data-reveal data-delay="500">
+    <span class="font-micro text-[8px] tracking-[0.25em] uppercase">scroll</span>
+    <div class="w-px h-8 bg-gradient-to-b from-text-muted/40 to-transparent"></div>
   </div>
 </section>
 
 
+<!-- Section marker -->
+<div class="section-marker py-4">— 001 —</div>
+
 <!-- ============================================
-     SEKTION 2 — KENNZAHLEN-BAND
+     SEKTION 2 — KENNZAHLEN (Status-Monitor)
      ============================================ -->
 <section class="relative z-30 bg-bg-primary" id="kennzahlen">
-  <div class="border-y border-border-subtle">
+  <!-- Monitor Header -->
+  <div class="border-t border-border-subtle">
+    <p class="font-micro text-[8px] text-text-muted/30 tracking-[0.2em] uppercase text-center py-3">
+      · · · VMAX SÜD STATUS MONITOR · · ·
+    </p>
+  </div>
+
+  <div class="border-y border-border-subtle relative">
+    <!-- Corner brackets -->
+    <div class="absolute -top-px -left-px w-5 h-5 border-t border-l border-border-strong pointer-events-none hidden lg:block"></div>
+    <div class="absolute -top-px -right-px w-5 h-5 border-t border-r border-border-strong pointer-events-none hidden lg:block"></div>
+    <div class="absolute -bottom-px -left-px w-5 h-5 border-b border-l border-border-strong pointer-events-none hidden lg:block"></div>
+    <div class="absolute -bottom-px -right-px w-5 h-5 border-b border-r border-border-strong pointer-events-none hidden lg:block"></div>
+
     <div class="container-vmax py-12 lg:py-16">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
-        <div class="text-center lg:text-left" data-reveal>
-          <p class="font-mono text-4xl lg:text-5xl font-medium text-text-primary" data-counter="80">
+        <div data-reveal>
+          <p class="font-micro text-[8px] text-text-muted/40 uppercase tracking-[0.15em] mb-2">Metrik 01</p>
+          <p class="font-mono text-3xl lg:text-4xl font-medium text-text-primary" data-counter="80">
             <span class="counter-value">0</span><span class="text-accent">%</span>
           </p>
-          <p class="text-text-secondary text-sm mt-2">Fahrzeugabdeckung</p>
+          <div class="w-full h-px bg-accent/30 mt-2 mb-2"></div>
+          <p class="text-text-secondary text-xs">Fahrzeugabdeckung</p>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="w-1 h-1 rounded-full bg-accent-success animate-glow-pulse"></span>
+            <span class="font-micro text-[8px] text-accent-success/70 uppercase tracking-wider">Active</span>
+          </div>
         </div>
 
-        <div class="text-center lg:text-left" data-reveal data-delay="100">
-          <p class="font-mono text-4xl lg:text-5xl font-medium text-text-primary" data-counter="28">
+        <div data-reveal data-delay="80">
+          <p class="font-micro text-[8px] text-text-muted/40 uppercase tracking-[0.15em] mb-2">Metrik 02</p>
+          <p class="font-mono text-3xl lg:text-4xl font-medium text-text-primary" data-counter="28">
             <span class="counter-value">0</span><span class="text-accent">+</span>
           </p>
-          <p class="text-text-secondary text-sm mt-2">Jahre Netzwerk-Erfahrung</p>
+          <div class="w-full h-px bg-accent/30 mt-2 mb-2"></div>
+          <p class="text-text-secondary text-xs">Jahre Netzwerk-Erfahrung</p>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="w-1 h-1 rounded-full bg-accent-success animate-glow-pulse"></span>
+            <span class="font-micro text-[8px] text-accent-success/70 uppercase tracking-wider">Verified</span>
+          </div>
         </div>
 
-        <div class="text-center lg:text-left" data-reveal data-delay="200">
-          <p class="font-mono text-4xl lg:text-5xl font-medium text-text-primary" data-counter="100">
+        <div data-reveal data-delay="160">
+          <p class="font-micro text-[8px] text-text-muted/40 uppercase tracking-[0.15em] mb-2">Metrik 03</p>
+          <p class="font-mono text-3xl lg:text-4xl font-medium text-text-primary" data-counter="100">
             <span class="counter-value">0</span><span class="text-accent">%</span>
           </p>
-          <p class="text-text-secondary text-sm mt-2">Einzelabstimmung vor Ort</p>
+          <div class="w-full h-px bg-accent/30 mt-2 mb-2"></div>
+          <p class="text-text-secondary text-xs">Einzelabstimmung vor Ort</p>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="w-1 h-1 rounded-full bg-accent-success animate-glow-pulse"></span>
+            <span class="font-micro text-[8px] text-accent-success/70 uppercase tracking-wider">Active</span>
+          </div>
         </div>
 
-        <div class="text-center lg:text-left" data-reveal data-delay="300">
-          <p class="font-mono text-4xl lg:text-5xl font-medium text-text-primary">
-            <span class="text-text-primary">1</span><span class="text-accent">on</span><span class="text-text-primary">1</span>
+        <div data-reveal data-delay="240">
+          <p class="font-micro text-[8px] text-text-muted/40 uppercase tracking-[0.15em] mb-2">Metrik 04</p>
+          <p class="font-mono text-3xl lg:text-4xl font-medium text-text-primary">
+            1<span class="text-accent">on</span>1
           </p>
-          <p class="text-text-secondary text-sm mt-2">mit Stefan Jung persönlich</p>
+          <div class="w-full h-px bg-accent/30 mt-2 mb-2"></div>
+          <p class="text-text-secondary text-xs">mit Stefan Jung persönlich</p>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="w-1 h-1 rounded-full bg-accent-success animate-glow-pulse"></span>
+            <span class="font-micro text-[8px] text-accent-success/70 uppercase tracking-wider">Active</span>
+          </div>
         </div>
 
       </div>
@@ -114,23 +217,35 @@
 </section>
 
 
+<!-- Section marker -->
+<div class="section-marker py-4">— 002 —</div>
+
 <!-- ============================================
      SEKTION 3 — DAS PROBLEM / DIE HALTUNG
      ============================================ -->
-<section class="section-spacing" id="haltung">
+<section class="section-spacing relative" id="haltung">
+  <!-- Stamp watermark -->
+  <div class="absolute top-20 right-8 lg:right-24 hidden lg:block" aria-hidden="true">
+    <div class="stamp w-28 h-28 text-[7px] leading-tight text-center p-2" style="transform: rotate(-6deg)">
+      <span>TÜV-CERTIFIED</span><br><span>SINCE 2011</span><br><span>WESTENDORF</span>
+    </div>
+  </div>
+
   <div class="container-vmax">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
       <!-- Linke Spalte: Headline -->
       <div class="lg:col-span-5" data-reveal>
-        <span class="label-caps text-accent block mb-4">Unsere Haltung</span>
-        <h2 class="font-display text-3xl md:text-4xl lg:text-display-section font-medium uppercase tracking-tight leading-[1.05]">
+        <span class="label-mono text-accent block mb-4">Unsere Haltung</span>
+        <!-- Ruler line -->
+        <div class="ruler-line"><% for(var i=0;i<20;i++){%><span class="tick"></span><%}%></div>
+        <h2 class="font-display text-display-section italic leading-[1.05]">
           Warum die meisten Tunings enttäuschen.
         </h2>
       </div>
 
       <!-- Rechte Spalte: Editorial-Text -->
-      <div class="lg:col-span-7 lg:pt-12" data-reveal data-delay="150">
+      <div class="lg:col-span-7 lg:pt-12" data-reveal data-delay="120">
         <div class="space-y-6 text-text-secondary text-lg leading-relaxed">
           <p>
             Eine Software aus dem Netz herunterladen, auf dem Parkplatz aufspielen, Feierabend&nbsp;— das ist kein Tuning. Das ist Glücksspiel mit dem Motor Ihres Fahrzeugs.
@@ -143,12 +258,11 @@
           </p>
         </div>
 
-        <!-- Akzent-Linie + Signature -->
         <div class="mt-10 pt-8 border-t border-border-subtle flex items-center gap-6">
           <div class="w-12 h-px bg-accent"></div>
           <div>
             <p class="text-text-primary font-medium">Stefan Jung</p>
-            <p class="text-text-muted text-sm">Inhaber, VMAX Süd</p>
+            <p class="text-text-muted text-sm font-micro tracking-wider">Inhaber, VMAX Süd</p>
           </div>
         </div>
       </div>
@@ -158,150 +272,77 @@
 </section>
 
 
+<!-- Section marker -->
+<div class="section-marker py-4">— 003 —</div>
+
 <!-- ============================================
-     SEKTION 4 — LEISTUNGSSPEKTRUM (Service-Cards)
+     SEKTION 4 — LEISTUNGSSPEKTRUM (Datenblatt-Cards)
      ============================================ -->
 <section class="section-spacing bg-bg-secondary" id="leistungen">
   <div class="container-vmax">
 
     <!-- Section Header -->
     <div class="max-w-2xl mb-16" data-reveal>
-      <span class="label-caps text-accent block mb-4">Leistungen</span>
-      <h2 class="font-display text-3xl md:text-4xl lg:text-display-section font-medium uppercase tracking-tight leading-[1.05]">
+      <div class="ruler-line"><% for(var i=0;i<15;i++){%><span class="tick"></span><%}%></div>
+      <h2 class="font-display text-display-section italic leading-[1.05]">
         Was wir für Sie tun.
       </h2>
+      <!-- Coordinate badge -->
+      <p class="font-micro text-[8px] text-text-muted/30 tracking-widest mt-4">48.4267°N · 10.8742°E · WESTENDORF</p>
     </div>
 
-    <!-- 2x2 Service Grid -->
+    <!-- 2x2 Datenblatt Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-      <!-- Card 1: Chiptuning -->
-      <a href="/chiptuning" class="card group relative overflow-hidden" data-reveal>
-        <div class="flex items-start justify-between mb-6">
-          <div class="w-12 h-12 flex items-center justify-center border border-border-strong rounded-sm group-hover:border-accent/50 transition-colors duration-300">
-            <svg class="w-6 h-6 text-text-secondary group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
-            </svg>
-          </div>
-          <svg class="w-5 h-5 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
-        </div>
-        <h3 class="font-display text-xl md:text-display-card font-medium uppercase tracking-tight mb-3">
-          Chiptuning &<br>Leistungssteigerung
-        </h3>
-        <p class="text-text-secondary text-sm leading-relaxed mb-6">
-          Einzelabstimmung auf dem Prüfstand — nicht aus der Dose. Jedes Kennfeld wird individuell an Ihren Motor angepasst.
-        </p>
-        <ul class="space-y-2">
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Stage 1 / Stage 2 / Individual
-          </li>
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Prüfstandslauf vor und nach Optimierung
-          </li>
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Daten-Report zum Mitnehmen
-          </li>
-        </ul>
-      </a>
+      <% var services = [
+        { num: '01', href: '/chiptuning', title: 'Chiptuning &amp; Leistungssteigerung', desc: 'Einzelabstimmung auf dem Prüfstand — nicht aus der Dose. Jedes Kennfeld wird individuell an Ihren Motor angepasst.', specs: [['PRÜFSTANDLAUF','✓'],['TÜV-EINTRAGUNG','✓'],['DOKUMENTATION','✓'],['AB-PREIS','ab 499 €']], bar: '75%' },
+        { num: '02', href: '/tuev-eintragung', title: 'TÜV-Eintragung &amp; Einzelabnahme', desc: 'Von der Begutachtung bis zum Stempel. Wir begleiten Sie durch den gesamten Eintragungsprozess.', specs: [['EINZELABNAHME','✓'],['TEILEGUTACHTEN','✓'],['GTÜ / DEKRA / TÜV','✓'],['AB-PREIS','ab 89 €']], bar: '60%' },
+        { num: '03', href: '/komplettumbauten', title: 'Komplettumbauten mit StVO-Abnahme', desc: 'Vom Konzept bis zur Straßenzulassung. Auch Eigenbauten und Einzelstücke bringen wir durch die Abnahme.', specs: [['MOTORTAUSCH','✓'],['FAHRWERK','✓'],['STVO-KONFORM','✓'],['EIGENBAUTEN','✓']], bar: '90%' },
+        { num: '04', href: '/b2b', title: 'B2B-Prüftechnik für Unternehmen', desc: 'Gutachten, Abgastests und Bauteilfreigaben für Tuninghersteller, Importeure und Werkstätten.', specs: [['BETRIEBSFESTIGKEIT','✓'],['ABGASTESTS','✓'],['TEILEGUTACHTEN','✓'],['NDA-FÄHIG','✓']], bar: '45%' }
+      ]; %>
 
-      <!-- Card 2: TÜV-Eintragung -->
-      <a href="/tuev-eintragung" class="card group relative overflow-hidden" data-reveal data-delay="100">
-        <div class="flex items-start justify-between mb-6">
-          <div class="w-12 h-12 flex items-center justify-center border border-border-strong rounded-sm group-hover:border-accent/50 transition-colors duration-300">
-            <svg class="w-6 h-6 text-text-secondary group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
-            </svg>
-          </div>
-          <svg class="w-5 h-5 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+      <% services.forEach(function(s, i) { %>
+      <a href="<%= s.href %>" class="card p-0 group relative overflow-hidden" data-reveal data-delay="<%= i * 80 %>">
+        <!-- Radar indicator on hover -->
+        <div class="absolute top-4 right-4 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <svg viewBox="0 0 24 24" class="w-full h-full animate-spin" style="animation-duration:3s">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="#2A2A2A" stroke-width="0.5"/>
+            <line x1="12" y1="2" x2="12" y2="12" stroke="#F59E0B" stroke-width="0.5" opacity="0.6"/>
+          </svg>
         </div>
-        <h3 class="font-display text-xl md:text-display-card font-medium uppercase tracking-tight mb-3">
-          TÜV-Eintragung &<br>Einzelabnahme
-        </h3>
-        <p class="text-text-secondary text-sm leading-relaxed mb-6">
-          Von der Begutachtung bis zum Stempel. Wir begleiten Sie durch den gesamten Eintragungsprozess.
-        </p>
-        <ul class="space-y-2">
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Vollständige Begleitung bis Zulassung
-          </li>
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Teilegutachten-Erstellung
-          </li>
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Kooperation mit GTÜ, Dekra, TÜV
-          </li>
-        </ul>
-      </a>
 
-      <!-- Card 3: Komplettumbauten -->
-      <a href="/komplettumbauten" class="card group relative overflow-hidden" data-reveal data-delay="200">
-        <div class="flex items-start justify-between mb-6">
-          <div class="w-12 h-12 flex items-center justify-center border border-border-strong rounded-sm group-hover:border-accent/50 transition-colors duration-300">
-            <svg class="w-6 h-6 text-text-secondary group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.384 5.384a2.25 2.25 0 01-3.182-3.182L8.238 11.99M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
-            </svg>
-          </div>
-          <svg class="w-5 h-5 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+        <!-- Header -->
+        <div class="px-6 py-3 border-b border-border-subtle">
+          <span class="font-micro text-[9px] text-text-muted/50 uppercase tracking-[0.12em]">Dienstleistung · <%= s.num %> / 04</span>
         </div>
-        <h3 class="font-display text-xl md:text-display-card font-medium uppercase tracking-tight mb-3">
-          Komplettumbauten<br>mit StVO-Abnahme
-        </h3>
-        <p class="text-text-secondary text-sm leading-relaxed mb-6">
-          Vom Konzept bis zur Straßenzulassung. Auch Eigenbauten und Einzelstücke bringen wir durch die Abnahme.
-        </p>
-        <ul class="space-y-2">
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Vom Konzept bis zur Straßenzulassung
-          </li>
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Auch Eigenbauten und Einzelstücke
-          </li>
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Vollständige StVO-Konformität
-          </li>
-        </ul>
-      </a>
 
-      <!-- Card 4: B2B-Prüftechnik -->
-      <a href="/b2b" class="card group relative overflow-hidden" data-reveal data-delay="300">
-        <div class="flex items-start justify-between mb-6">
-          <div class="w-12 h-12 flex items-center justify-center border border-border-strong rounded-sm group-hover:border-accent/50 transition-colors duration-300">
-            <svg class="w-6 h-6 text-text-secondary group-hover:text-accent transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605"/>
-            </svg>
+        <!-- Content -->
+        <div class="p-6">
+          <h3 class="font-display text-display-card italic leading-tight mb-3">
+            <%- s.title %>
+          </h3>
+          <p class="text-text-secondary text-sm leading-relaxed mb-6">
+            <%= s.desc %>
+          </p>
+
+          <!-- Spec Sheet -->
+          <div class="space-y-2 mb-6">
+            <% s.specs.forEach(function(spec) { %>
+            <div class="spec-row">
+              <span class="spec-label"><%= spec[0] %></span>
+              <span class="spec-dots"></span>
+              <span class="spec-value"><%= spec[1] %></span>
+            </div>
+            <% }); %>
           </div>
-          <svg class="w-5 h-5 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
         </div>
-        <h3 class="font-display text-xl md:text-display-card font-medium uppercase tracking-tight mb-3">
-          B2B-Prüftechnik<br>für Unternehmen
-        </h3>
-        <p class="text-text-secondary text-sm leading-relaxed mb-6">
-          Gutachten, Abgastests und Bauteilfreigaben für Tuninghersteller, Importeure und Werkstätten.
-        </p>
-        <ul class="space-y-2">
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Betriebsfestigkeits-Ermittlung
-          </li>
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Abgastests & Emissions-Nachweise
-          </li>
-          <li class="flex items-center gap-2 text-text-muted text-sm">
-            <span class="w-1 h-1 bg-accent rounded-full flex-shrink-0"></span>
-            Teilegutachten für Tuninghersteller
-          </li>
-        </ul>
+
+        <!-- Progress bar -->
+        <div class="h-0.5 bg-bg-secondary">
+          <div class="h-full bg-accent/40 group-hover:bg-accent transition-colors duration-500" style="width:<%= s.bar %>"></div>
+        </div>
       </a>
+      <% }); %>
 
     </div>
   </div>
@@ -816,19 +857,19 @@
 
 
 <!-- ============================================
-     SCROLL REVEAL + COUNTER + DYNO CURVE
+     ANIMATIONS
      ============================================ -->
 <script>
 (function() {
-  // --- Scroll Reveal ---
+  // --- Scroll Reveal with stagger ---
   var revealElements = document.querySelectorAll('[data-reveal]');
 
   function reveal() {
     revealElements.forEach(function(el) {
-      if (el.getBoundingClientRect().top < window.innerHeight - 60) {
+      if (el.getBoundingClientRect().top < window.innerHeight - 40) {
         var delay = parseInt(el.dataset.delay || 0);
         setTimeout(function() {
-          el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+          el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
           el.style.opacity = '1';
           el.style.transform = 'translateY(0)';
         }, delay);
@@ -838,13 +879,13 @@
 
   revealElements.forEach(function(el) {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
+    el.style.transform = 'translateY(16px)';
   });
 
-  setTimeout(reveal, 100);
+  setTimeout(reveal, 80);
   window.addEventListener('scroll', reveal, { passive: true });
 
-  // --- CountUp for [data-counter] (Kennzahlen) ---
+  // --- CountUp for [data-counter] ---
   var counterEls = document.querySelectorAll('[data-counter]');
   var countersAnimated = false;
 
@@ -857,18 +898,6 @@
       var valueEl = counter.querySelector('.counter-value');
       if (!valueEl) return;
       countUp(valueEl, target, 2000);
-    });
-  }
-
-  // --- CountUp for [data-countup] (PS/Nm values anywhere) ---
-  function initCountUps() {
-    document.querySelectorAll('[data-countup]').forEach(function(el) {
-      if (el.dataset.counted) return;
-      if (el.getBoundingClientRect().top > window.innerHeight) return;
-      el.dataset.counted = '1';
-      var target = parseInt(el.dataset.countup);
-      var prefix = el.dataset.prefix || '';
-      countUp(el, target, 1500, prefix);
     });
   }
 
@@ -885,41 +914,37 @@
   }
 
   window.addEventListener('scroll', animateCounters, { passive: true });
-  window.addEventListener('scroll', initCountUps, { passive: true });
 
-  // --- Dyno Curve Animation (scroll-triggered) ---
+  // --- Hero background dyno draw-in ---
+  var heroDynoBg = document.getElementById('hero-dyno-bg');
+  if (heroDynoBg) {
+    setTimeout(function() {
+      heroDynoBg.style.transition = 'stroke-dashoffset 2.5s ease-out';
+      heroDynoBg.style.strokeDashoffset = '0';
+    }, 400);
+  }
+
+  // --- Panel dyno curve (scroll-triggered) ---
   var dynoCurve = document.getElementById('dyno-stage');
   var dynoLabel = document.getElementById('dyno-label');
   var dynoAnimated = false;
 
   function animateDyno() {
     if (dynoAnimated || !dynoCurve) return;
-    var hero = document.getElementById('hero');
-    if (!hero) return;
-    var scrolled = window.pageYOffset;
-    var heroH = hero.offsetHeight;
-    // Trigger when user has scrolled 15% into hero
-    if (scrolled > heroH * 0.15) {
+    if (window.pageYOffset > 80) {
       dynoAnimated = true;
       dynoCurve.style.transition = 'stroke-dashoffset 2s ease-out';
       dynoCurve.style.strokeDashoffset = '0';
       if (dynoLabel) {
         setTimeout(function() {
-          dynoLabel.style.transition = 'opacity 0.6s ease';
+          dynoLabel.style.transition = 'opacity 0.5s ease';
           dynoLabel.style.opacity = '1';
-        }, 1800);
+        }, 1600);
       }
     }
   }
 
   window.addEventListener('scroll', animateDyno, { passive: true });
-
-  // --- Ken Burns on hero ---
-  var heroImg = document.querySelector('.hero-bg-image');
-  if (heroImg) {
-    heroImg.style.transition = 'transform 15s ease-out';
-    setTimeout(function() { heroImg.style.transform = 'scale(1.08)'; }, 200);
-  }
 })();
 </script>
 

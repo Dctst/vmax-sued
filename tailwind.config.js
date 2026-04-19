@@ -7,8 +7,9 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
-      display: ['"Fraunces"', '"Georgia"', 'serif'],
+      display: ['"Bodoni Moda"', '"Playfair Display"', '"Georgia"', 'serif'],
       mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      micro: ['"Space Mono"', '"JetBrains Mono"', 'monospace'],
     },
     extend: {
       colors: {
@@ -36,12 +37,13 @@ module.exports = {
         error: '#EF4444',
       },
       fontSize: {
-        'display-hero': ['96px', { lineHeight: '100px', letterSpacing: '-0.02em', fontWeight: '400' }],
-        'display-section': ['64px', { lineHeight: '72px', letterSpacing: '-0.015em', fontWeight: '400' }],
-        'display-card': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '400' }],
+        'display-hero': ['clamp(3.5rem,5vw,5.5rem)', { lineHeight: '1.05', letterSpacing: '-0.04em', fontWeight: '500' }],
+        'display-section': ['clamp(2.5rem,4vw,4rem)', { lineHeight: '1.1', letterSpacing: '-0.035em', fontWeight: '500' }],
+        'display-card': ['clamp(1.5rem,2.5vw,2rem)', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '500' }],
         'body-lg': ['20px', { lineHeight: '32px' }],
         'body': ['16px', { lineHeight: '28px' }],
-        'caption': ['12px', { lineHeight: '16px', letterSpacing: '0.15em', fontWeight: '500' }],
+        'caption': ['11px', { lineHeight: '16px', letterSpacing: '0.12em', fontWeight: '500' }],
+        'micro': ['9px', { lineHeight: '14px', letterSpacing: '0.08em', fontWeight: '400' }],
       },
       maxWidth: {
         'container': '1440px',
@@ -57,13 +59,21 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-accent': 'linear-gradient(135deg, #F59E0B 0%, #B45309 100%)',
-        'gradient-hero': 'linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.9) 100%)',
       },
       gridTemplateColumns: {
         '12': 'repeat(12, minmax(0, 1fr))',
       },
       transitionDuration: {
         '400': '400ms',
+      },
+      animation: {
+        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+      },
+      keyframes: {
+        'glow-pulse': {
+          '0%, 100%': { opacity: '0.8' },
+          '50%': { opacity: '1' },
+        },
       },
     },
   },

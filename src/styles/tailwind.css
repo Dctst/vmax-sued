@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 /* ============================================
-   VMAX SÜD — Design System Base Styles
-   Accent: Glühdraht-Bernstein (#F59E0B)
-   Display: Fraunces (Serif) · Body: Inter · Mono: JetBrains Mono
+   VMAX SÜD — Design System v3
+   "Prüfstandprotokoll trifft Magazin"
+   Accent: Bernstein #F59E0B
+   Display: Bodoni Moda (Serif) · Body: Inter
+   Mono: JetBrains Mono · Micro: Space Mono
    ============================================ */
 
 @layer base {
@@ -24,7 +26,6 @@
     --accent-glow: rgba(245, 158, 11, 0.15);
     --accent-success: #4ADE80;
     --error: #EF4444;
-    --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #B45309 100%);
   }
 
   html {
@@ -48,9 +49,9 @@
     color: #F5F5F5;
   }
 
-  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: #0A0A0A; }
-  ::-webkit-scrollbar-thumb { background: #3A3A3A; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 0; }
   ::-webkit-scrollbar-thumb:hover { background: #F59E0B; }
 }
 
@@ -63,25 +64,31 @@
     @apply py-section-mobile lg:py-section;
   }
 
+  /* Mono stempel-label */
+  .label-mono {
+    @apply font-micro text-micro uppercase text-text-muted tracking-[0.12em];
+  }
+
+  /* Caption label — Inter */
   .label-caps {
-    @apply text-caption uppercase tracking-[0.15em] font-medium text-text-muted font-sans;
+    @apply text-caption uppercase tracking-[0.12em] font-medium text-text-muted font-sans;
   }
 
   .btn-primary {
     @apply inline-flex items-center gap-2 px-8 py-4 bg-accent font-sans
-           text-bg-primary font-semibold text-base tracking-wide transition-all duration-300
+           text-bg-primary font-semibold text-sm tracking-wide transition-all duration-300
            hover:bg-accent-hover active:scale-[0.98];
   }
 
   .btn-ghost {
     @apply inline-flex items-center gap-2 px-8 py-4 border border-border-strong
-           text-text-primary font-sans font-medium text-base tracking-wide
-           transition-all duration-300 hover:border-text-secondary
+           text-text-primary font-sans font-medium text-sm tracking-wide
+           transition-all duration-300 hover:border-accent/40
            hover:text-white active:scale-[0.98];
   }
 
   .card {
-    @apply bg-bg-tertiary border border-border-subtle p-card-inner
+    @apply bg-bg-tertiary border border-border-subtle
            transition-all duration-400 hover:-translate-y-1
            hover:border-accent/30;
   }
@@ -96,6 +103,76 @@
 
   .full-bleed {
     @apply w-screen relative left-1/2 right-1/2 -mx-[50vw];
+  }
+
+  /* Corner brackets — monitor frame */
+  .corner-brackets {
+    position: relative;
+  }
+  .corner-brackets::before,
+  .corner-brackets::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: #3A3A3A;
+    pointer-events: none;
+  }
+  .corner-brackets::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  .corner-brackets::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+
+  /* Tab-leader dots for spec sheets */
+  .spec-row {
+    @apply flex items-baseline font-mono text-xs gap-2;
+  }
+  .spec-row .spec-label {
+    @apply text-text-muted whitespace-nowrap;
+  }
+  .spec-row .spec-dots {
+    @apply flex-1 border-b border-dotted border-border-subtle mb-[3px];
+  }
+  .spec-row .spec-value {
+    @apply text-text-primary whitespace-nowrap;
+  }
+
+  /* Stamp element */
+  .stamp {
+    @apply font-micro uppercase tracking-[0.1em] text-text-muted/20 border border-text-muted/10 rounded-full
+           inline-flex items-center justify-center;
+    transform: rotate(-3deg);
+  }
+
+  /* Section number marker */
+  .section-marker {
+    @apply font-micro text-text-muted/30 tracking-[0.2em] text-center;
+  }
+
+  /* Ruler tick line above headlines */
+  .ruler-line {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    margin-bottom: 12px;
+  }
+  .ruler-line .tick {
+    width: 1px;
+    background: #3A3A3A;
+  }
+  .ruler-line .tick:nth-child(5n) {
+    height: 10px;
+  }
+  .ruler-line .tick:not(:nth-child(5n)) {
+    height: 5px;
   }
 }
 
