@@ -40,7 +40,7 @@ router.get('/tuev-eintragung', (req, res) => {
     schema: {
       name: 'TÜV-Eintragung · Komplettübernahme',
       description: 'Komplette Abwicklung der TÜV-Eintragung von Tuning-Teilen. Die Eintragung selbst erfolgt durch einen amtlich anerkannten Sachverständigen (GTÜ, Dekra, TÜV).',
-      price: '89',
+      price: '159',
     },
     breadcrumbs: [{ name: 'TÜV-Eintragung', path: '/tuev-eintragung' }],
     faq: [
