@@ -48,6 +48,7 @@ async function handleContact(req, res) {
     if (!service) errors.push('Bitte wählen Sie einen Service.');
     if (!name || name.trim().length < 2) errors.push('Bitte geben Sie Ihren Namen an.');
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push('Bitte geben Sie eine gültige E-Mail-Adresse an.');
+    if (!phone || String(phone).replace(/\D/g, '').length < 6) errors.push('Bitte geben Sie eine Telefonnummer an.');
     if (privacy !== 'true' && privacy !== true) errors.push('Bitte stimmen Sie der Datenschutzerklärung zu.');
 
     if (errors.length > 0) {

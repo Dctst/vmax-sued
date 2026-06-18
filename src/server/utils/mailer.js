@@ -1,5 +1,9 @@
 const nodemailer = require('nodemailer');
 
+// Hardcoded Empfänger — alle Kontakt-Anfragen gehen an Stefan.
+// Override via Env (MAIL_TO) ist möglich für Tests.
+const RECIPIENT = process.env.MAIL_TO || 'stefan_jung@vmax-sued.com';
+
 let transporter;
 
 if (process.env.SMTP_HOST) {
@@ -73,7 +77,7 @@ async function sendContactMail({ vehicle, service, name, email, phone, message, 
   `;
 
   if (!transporter) {
-    console.log('SMTP not configured — logging mail to console:');
+    console.log(`[mailer] SMTP not configured — would send to: ${RECIPIENT}`);
     console.log(text);
     if (attachment) {
       console.log(`(Anhang: ${attachment.filename}, ${attachment.contentType}, ${attachment.content.length} bytes)`);
@@ -82,8 +86,8 @@ async function sendContactMail({ vehicle, service, name, email, phone, message, 
   }
 
   return transporter.sendMail({
-    from: process.env.MAIL_FROM,
-    to: process.env.MAIL_TO,
+    from: process.env.MAIL_FROM || `Vmax Sued Kontaktformular <${RECIPIENT}>`,
+    to: RECIPIENT,
     replyTo: email,
     subject,
     text,

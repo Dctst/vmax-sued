@@ -13,7 +13,7 @@
       Termin anfragen
     </h1>
     <p class="mt-4 text-lg text-text-secondary max-w-2xl">
-      Nennen Sie uns Ihr Fahrzeug und Ihren Wunsch — wir melden uns innerhalb von 24&nbsp;Stunden bei Ihnen.
+      Nennen Sie uns Ihr Fahrzeug und Ihren Wunsch — wir melden uns innerhalb von <span class="text-burnt font-medium">24&nbsp;Stunden</span> bei Ihnen.
     </p>
   </div>
 </section>
@@ -195,8 +195,8 @@
                   class="w-full bg-bg-tertiary border border-border-subtle text-text-primary px-4 py-3 text-sm placeholder:text-text-muted focus:outline-none focus:border-burnt transition-colors">
               </div>
               <div>
-                <label for="c-phone" class="block text-sm text-text-secondary mb-2">Telefon <span class="text-text-muted">(optional)</span></label>
-                <input type="tel" id="c-phone" name="phone" placeholder="+49 ..."
+                <label for="c-phone" class="block text-sm text-text-secondary mb-2">Telefon *</label>
+                <input type="tel" id="c-phone" name="phone" required placeholder="+49 ..."
                   class="w-full bg-bg-tertiary border border-border-subtle text-text-primary px-4 py-3 text-sm placeholder:text-text-muted focus:outline-none focus:border-burnt transition-colors">
               </div>
               <div>
@@ -270,7 +270,7 @@
             </div>
             <h2 class="font-display text-2xl font-medium uppercase tracking-tight mb-3">Anfrage gesendet</h2>
             <p class="text-text-secondary text-lg max-w-md mx-auto">
-              Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24&nbsp;Stunden bei Ihnen.
+              Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von <span class="text-burnt font-medium">24&nbsp;Stunden</span> bei Ihnen.
             </p>
             <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/" class="btn-ghost">Zurück zur Startseite</a>
@@ -422,6 +422,8 @@
         if (!document.getElementById('c-name').value.trim()) { highlight('c-name'); return; }
         var emailVal = document.getElementById('c-email').value.trim();
         if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { highlight('c-email'); return; }
+        var phoneVal = document.getElementById('c-phone').value.trim();
+        if (!phoneVal || phoneVal.replace(/\D/g, '').length < 6) { highlight('c-phone'); return; }
         if (!document.getElementById('c-privacy').checked) { highlight('c-privacy'); return; }
       }
 
