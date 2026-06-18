@@ -1,34 +1,36 @@
-const nodemailer = require('nodemailer');
+// Mailer — leitet Kontakt-Anfragen via Web3Forms an Stefan weiter.
+// Web3Forms ist ein serverless Form-Backend:
+//  - kein eigener SMTP nötig
+//  - kein Domain-Setup
+//  - 250 Mails/Monat im Free-Tier
+//  - der Access Key wird beim Onboarding erzeugt und gehört zu einer Empfänger-Mail
+// Doc: https://docs.web3forms.com/
 
-// Hardcoded Empfänger — alle Kontakt-Anfragen gehen an Stefan.
-// Override via Env (MAIL_TO) ist möglich für Tests.
-const RECIPIENT = process.env.MAIL_TO || 'stefan_jung@vmax-sued.com';
+const WEB3FORMS_ACCESS_KEY =
+  process.env.WEB3FORMS_ACCESS_KEY || '62129a10-fbf1-4a7a-bdbe-4619562ab80c';
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
-let transporter;
-
-if (process.env.SMTP_HOST) {
-  transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT || '465'),
-    secure: process.env.SMTP_SECURE === 'true',
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 async function sendContactMail({ vehicle, service, name, email, phone, message, attachment }) {
   const subject = `Neue Anfrage: ${service} — ${vehicle.brand} ${vehicle.model}`;
 
-  const text = [
+  // Plain-Text-Version als Fallback
+  const plainText = [
     '=== NEUE ANFRAGE ÜBER VMAX-SUED.COM ===',
     '',
     'FAHRZEUG',
     `  Marke:    ${vehicle.brand}`,
     `  Modell:   ${vehicle.model}`,
-    `  Baujahr:  ${vehicle.year}`,
-    `  Motor:    ${vehicle.engine}`,
+    `  Baujahr:  ${vehicle.year || '—'}`,
+    `  Motor:    ${vehicle.engine || '—'}`,
     '',
     'GEWÜNSCHTER SERVICE',
     `  ${service}`,
@@ -41,32 +43,36 @@ async function sendContactMail({ vehicle, service, name, email, phone, message, 
     'NACHRICHT',
     `  ${message || '—'}`,
     '',
+    attachment ? `(Fahrzeugschein-Anhang: ${attachment.filename})` : '(Kein Fahrzeugschein-Anhang)',
     '=========================================',
   ].join('\n');
 
-  const html = `
-    <div style="font-family: -apple-system, sans-serif; max-width: 600px; margin: 0 auto;">
-      <div style="background: #0A0A0A; color: #F5F5F5; padding: 24px 32px;">
-        <h1 style="font-size: 18px; margin: 0; font-weight: 500;">Neue Anfrage über vmax-sued.com</h1>
+  // HTML-Mail mit Branding
+  const htmlBody = `
+    <div style="font-family: -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background: #141414; color: #F5F5F5;">
+      <div style="background: #0A0A0A; padding: 24px 32px; border-bottom: 2px solid #C87533;">
+        <h1 style="font-size: 18px; margin: 0; font-weight: 500; color: #F5F5F5;">Neue Anfrage über vmax-sued.com</h1>
       </div>
-      <div style="padding: 32px; background: #141414; color: #F5F5F5;">
+      <div style="padding: 32px;">
         <table style="width: 100%; border-collapse: collapse;">
-          <tr>
-            <td colspan="2" style="padding: 8px 0; color: #F59E0B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Fahrzeug</td>
-          </tr>
-          <tr><td style="padding: 4px 0; color: #A8A8A8; width: 120px;">Marke</td><td style="padding: 4px 0;">${vehicle.brand}</td></tr>
-          <tr><td style="padding: 4px 0; color: #A8A8A8;">Modell</td><td style="padding: 4px 0;">${vehicle.model}</td></tr>
-          <tr><td style="padding: 4px 0; color: #A8A8A8;">Baujahr</td><td style="padding: 4px 0;">${vehicle.year}</td></tr>
-          <tr><td style="padding: 4px 0; color: #A8A8A8;">Motor</td><td style="padding: 4px 0;">${vehicle.engine}</td></tr>
-          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #F59E0B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Service</td></tr>
-          <tr><td colspan="2" style="padding: 4px 0;">${service}</td></tr>
-          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #F59E0B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Kontakt</td></tr>
-          <tr><td style="padding: 4px 0; color: #A8A8A8;">Name</td><td style="padding: 4px 0;">${name}</td></tr>
-          <tr><td style="padding: 4px 0; color: #A8A8A8;">E-Mail</td><td style="padding: 4px 0;"><a href="mailto:${email}" style="color: #F59E0B;">${email}</a></td></tr>
-          <tr><td style="padding: 4px 0; color: #A8A8A8;">Telefon</td><td style="padding: 4px 0;">${phone || '—'}</td></tr>
+          <tr><td colspan="2" style="padding: 8px 0; color: #C87533; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Fahrzeug</td></tr>
+          <tr><td style="padding: 4px 0; color: #A8A8A8; width: 120px;">Marke</td><td style="padding: 4px 0;">${escapeHtml(vehicle.brand)}</td></tr>
+          <tr><td style="padding: 4px 0; color: #A8A8A8;">Modell</td><td style="padding: 4px 0;">${escapeHtml(vehicle.model)}</td></tr>
+          <tr><td style="padding: 4px 0; color: #A8A8A8;">Baujahr</td><td style="padding: 4px 0;">${escapeHtml(vehicle.year || '—')}</td></tr>
+          <tr><td style="padding: 4px 0; color: #A8A8A8;">Motor</td><td style="padding: 4px 0;">${escapeHtml(vehicle.engine || '—')}</td></tr>
+          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #C87533; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Service</td></tr>
+          <tr><td colspan="2" style="padding: 4px 0;">${escapeHtml(service)}</td></tr>
+          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #C87533; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Kontakt</td></tr>
+          <tr><td style="padding: 4px 0; color: #A8A8A8;">Name</td><td style="padding: 4px 0;">${escapeHtml(name)}</td></tr>
+          <tr><td style="padding: 4px 0; color: #A8A8A8;">E-Mail</td><td style="padding: 4px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #C87533;">${escapeHtml(email)}</a></td></tr>
+          <tr><td style="padding: 4px 0; color: #A8A8A8;">Telefon</td><td style="padding: 4px 0;"><a href="tel:${escapeHtml(phone)}" style="color: #C87533;">${escapeHtml(phone || '—')}</a></td></tr>
           ${message ? `
-          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #F59E0B; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Nachricht</td></tr>
-          <tr><td colspan="2" style="padding: 4px 0; white-space: pre-wrap;">${message}</td></tr>
+          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #C87533; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Nachricht</td></tr>
+          <tr><td colspan="2" style="padding: 4px 0; white-space: pre-wrap;">${escapeHtml(message)}</td></tr>
+          ` : ''}
+          ${attachment ? `
+          <tr><td colspan="2" style="padding: 16px 0 8px 0; color: #C87533; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;">Anhang</td></tr>
+          <tr><td colspan="2" style="padding: 4px 0; color: #4ADE80;">📎 Fahrzeugschein: ${escapeHtml(attachment.filename)}</td></tr>
           ` : ''}
         </table>
       </div>
@@ -76,24 +82,43 @@ async function sendContactMail({ vehicle, service, name, email, phone, message, 
     </div>
   `;
 
-  if (!transporter) {
-    console.log(`[mailer] SMTP not configured — would send to: ${RECIPIENT}`);
-    console.log(text);
-    if (attachment) {
-      console.log(`(Anhang: ${attachment.filename}, ${attachment.contentType}, ${attachment.content.length} bytes)`);
-    }
-    return { messageId: 'dev-' + Date.now() };
+  // Web3Forms erwartet multipart/form-data wenn ein File dabei ist,
+  // sonst tut's auch JSON. Wir nutzen FormData für beide Fälle.
+  const form = new FormData();
+  form.append('access_key', WEB3FORMS_ACCESS_KEY);
+  form.append('subject', subject);
+  form.append('from_name', 'Vmax Sued Kontaktformular');
+  form.append('replyto', email);
+  form.append('name', name);
+  form.append('email', email);
+  form.append('phone', phone || '');
+  form.append('message', plainText);
+  form.append('html', htmlBody);
+  // Anti-Spam: leeres Botpot-Feld
+  form.append('botcheck', '');
+
+  if (attachment && attachment.content && attachment.content.length > 0) {
+    const blob = new Blob([attachment.content], {
+      type: attachment.contentType || 'application/octet-stream',
+    });
+    form.append('attachment', blob, attachment.filename || 'fahrzeugschein');
   }
 
-  return transporter.sendMail({
-    from: process.env.MAIL_FROM || `Vmax Sued Kontaktformular <${RECIPIENT}>`,
-    to: RECIPIENT,
-    replyTo: email,
-    subject,
-    text,
-    html,
-    attachments: attachment ? [attachment] : undefined,
-  });
+  let res;
+  try {
+    res = await fetch(WEB3FORMS_ENDPOINT, { method: 'POST', body: form });
+  } catch (err) {
+    console.error('[mailer] Web3Forms-Request fehlgeschlagen:', err.message);
+    throw new Error('Versand fehlgeschlagen. Bitte später erneut versuchen.');
+  }
+
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || data.success === false) {
+    console.error('[mailer] Web3Forms-Antwort:', res.status, data);
+    throw new Error(data.message || 'Web3Forms hat die Anfrage abgelehnt.');
+  }
+
+  return { messageId: 'web3forms-' + Date.now() };
 }
 
 module.exports = { sendContactMail };
