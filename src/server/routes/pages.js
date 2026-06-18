@@ -15,12 +15,12 @@ router.get('/', (req, res) => {
 // Leistungsseiten
 router.get('/chiptuning', (req, res) => {
   res.render('pages/chiptuning', {
-    title: 'Chiptuning ab 699 € · Einzelabstimmung am Prüfstand — Vmax Sued',
-    description: 'Stage 1 ab 699 €. Einzelabstimmung statt Software-Datei am Prüfstand. TÜV-Eintragung komplett übernommen.',
+    title: 'Chiptuning ab 349 € · Einzelabstimmung am Prüfstand — Vmax Sued',
+    description: 'Stage 1 ab 349 €. Einzelabstimmung statt Software-Datei am Prüfstand. TÜV-Eintragung komplett übernommen.',
     schema: {
       name: 'Chiptuning & Kennfeldoptimierung',
       description: 'Professionelle Einzelabstimmung auf dem Prüfstand. Stage 1, Stage 2 und individuelle Kennfeldoptimierung für alle gängigen Fahrzeuge.',
-      price: '699',
+      price: '349',
     },
     breadcrumbs: [{ name: 'Chiptuning', path: '/chiptuning' }],
     faq: [
