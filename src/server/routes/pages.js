@@ -4,8 +4,8 @@ const router = express.Router();
 // Startseite
 router.get('/', (req, res) => {
   res.render('pages/index', {
-    title: 'Vmax Sued — Chiptuning & Leistungssteigerung in Westendorf bei Augsburg',
-    description: 'Einzelabstimmung am Prüfstand und komplette TÜV-Eintragung aus einer Hand. Chiptuning bei Vmax Sued in Westendorf bei Augsburg.',
+    title: 'Vmax Sued — Kennfeldoptimierung & Leistungssteigerung in Westendorf bei Augsburg',
+    description: 'Einzelabstimmung am Prüfstand und komplette TÜV-Eintragung aus einer Hand. Kennfeldoptimierung bei Vmax Sued in Westendorf bei Augsburg.',
     schema: null,
     breadcrumbs: null,
     faq: null,
@@ -15,16 +15,16 @@ router.get('/', (req, res) => {
 // Leistungsseiten
 router.get('/chiptuning', (req, res) => {
   res.render('pages/chiptuning', {
-    title: 'Chiptuning ab 349 € · Einzelabstimmung am Prüfstand — Vmax Sued',
+    title: 'Kennfeldoptimierung ab 349 € · Einzelabstimmung am Prüfstand — Vmax Sued',
     description: 'Stage 1 ab 349 €. Einzelabstimmung statt Software-Datei am Prüfstand. TÜV-Eintragung komplett übernommen.',
     schema: {
-      name: 'Chiptuning & Kennfeldoptimierung',
+      name: 'Kennfeldoptimierung & Kennfeldoptimierung',
       description: 'Professionelle Einzelabstimmung auf dem Prüfstand. Stage 1, Stage 2 und individuelle Kennfeldoptimierung für alle gängigen Fahrzeuge.',
       price: '349',
     },
-    breadcrumbs: [{ name: 'Chiptuning', path: '/chiptuning' }],
+    breadcrumbs: [{ name: 'Kennfeldoptimierung', path: '/chiptuning' }],
     faq: [
-      { q: 'Ist Chiptuning schädlich für den Motor?', a: 'Bei einer professionellen Einzelabstimmung innerhalb der Sicherheitsreserven des Motors: Nein. Wir bewegen uns immer im Rahmen dessen, was die Mechanik und Thermik sicher verträgt.' },
+      { q: 'Ist Kennfeldoptimierung schädlich für den Motor?', a: 'Bei einer professionellen Einzelabstimmung innerhalb der Sicherheitsreserven des Motors: Nein. Wir bewegen uns immer im Rahmen dessen, was die Mechanik und Thermik sicher verträgt.' },
       { q: 'Verliere ich meine Herstellergarantie?', a: 'Bei einem Neuwagen kann die Herstellergarantie betroffen sein. Allerdings muss der Hersteller im Schadensfall nachweisen, dass die Optimierung ursächlich war. Eine TÜV-Eintragung schafft zusätzliche Rechtssicherheit.' },
       { q: 'Kann das Tuning rückgängig gemacht werden?', a: 'Ja, jederzeit. Vor jeder Optimierung sichern wir die Original-Software. Eine Rückrüstung auf den Serienzustand ist problemlos möglich.' },
       { q: 'Wie lange dauert eine Abstimmung?', a: 'Eine Stage-1-Abstimmung dauert in der Regel 2–4 Stunden. Bei Stage 2 oder individuellen Umbauten planen wir einen ganzen Tag ein.' },
@@ -44,7 +44,7 @@ router.get('/tuev-eintragung', (req, res) => {
     },
     breadcrumbs: [{ name: 'TÜV-Eintragung', path: '/tuev-eintragung' }],
     faq: [
-      { q: 'Muss ich mein Chiptuning eintragen lassen?', a: 'Ja. Jede leistungsverändernde Maßnahme am Fahrzeug erfordert eine Eintragung, um die Betriebserlaubnis aufrechtzuerhalten. Die Eintragung erfolgt durch einen amtlich anerkannten Sachverständigen.' },
+      { q: 'Muss ich mein Kennfeldoptimierung eintragen lassen?', a: 'Ja. Jede leistungsverändernde Maßnahme am Fahrzeug erfordert eine Eintragung, um die Betriebserlaubnis aufrechtzuerhalten. Die Eintragung erfolgt durch einen amtlich anerkannten Sachverständigen.' },
       { q: 'Was ist der Unterschied zwischen ABE, Teilegutachten und Einzelabnahme?', a: 'Eine ABE gilt bundesweit für ein bestimmtes Teil. Ein Teilegutachten erfordert eine Abnahme durch einen Sachverständigen. Die Einzelabnahme ist für Umbauten ohne vorhandenes Gutachten.' },
       { q: 'Wie lange dauert der Eintragungsprozess?', a: 'Eine kleine Eintragung mit vorhandenem Gutachten ist in 1–2 Stunden erledigt. Einzelabnahmen dauern je nach Umfang einen halben bis ganzen Tag — sie wird durch den Sachverständigen vor Ort durchgeführt.' },
       { q: 'Wer führt die Eintragung tatsächlich durch?', a: 'Die Eintragung selbst erfolgt ausschließlich durch einen amtlich anerkannten Sachverständigen (GTÜ, Dekra oder TÜV Süd). Wir bereiten Ihr Fahrzeug fachgerecht vor und begleiten Sie zum Termin.' },
@@ -89,7 +89,7 @@ router.get('/team', (req, res) => {
 router.get('/kontakt', (req, res) => {
   res.render('pages/kontakt', {
     title: 'Kontakt & Termin anfragen — Vmax Sued',
-    description: 'Termin für Chiptuning, TÜV-Eintragung oder Beratung anfragen. Vmax Sued in Westendorf bei Augsburg.',
+    description: 'Termin für Kennfeldoptimierung, TÜV-Eintragung oder Beratung anfragen. Vmax Sued in Westendorf bei Augsburg.',
     schema: null, breadcrumbs: [{ name: 'Kontakt', path: '/kontakt' }], faq: null,
   });
 });
