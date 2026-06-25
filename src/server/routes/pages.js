@@ -52,6 +52,21 @@ router.get('/tuev-eintragung', (req, res) => {
   });
 });
 
+router.get('/tuningteil-zulassung', (req, res) => {
+  res.render('pages/tuningteil-zulassung', {
+    title: 'Tuningteil-Zulassung – ABE, Teilegutachten & ECE | Vmax Sued',
+    description: 'Tuningteile zulassen lassen: Prüfstandsmessungen und aufbereitete Daten für ABE, Teilegutachten und ECE-Typgenehmigung. NDA-fähig. Für Tuningteil-Hersteller und Importeure.',
+    schema: null,
+    breadcrumbs: [{ name: 'Tuningteil-Zulassung', path: '/tuningteil-zulassung' }],
+    faq: [
+      { q: 'Brauche ich für jedes Fahrzeugmodell ein eigenes Gutachten?', a: 'Das hängt vom Gutachtentyp ab. Ein Teilegutachten wird für eine definierte Liste von Fahrzeugen erstellt — je breiter die Abdeckung, desto mehr Prüfaufwand. Eine ABE umfasst ebenfalls eine bestimmte Typenliste und kann nachträglich erweitert werden. Wir klären zu Beginn, welche Fahrzeuge realistisch abgedeckt werden sollen.' },
+      { q: 'Was passiert auf der Vmax-Seite des Prozesses?', a: 'Wir liefern die technische Grundlage: Leistungsmessung am Prüfstand, Abgasanalyse (Euro 0–7), Geräuschmessung nach StVZO, Bremsenprüfung und Datenaufbereitung. Die Unterlagen gehen dann an den Sachverständigen oder technischen Dienst, der das Gutachten bzw. die Genehmigung ausstellt.' },
+      { q: 'Gilt eine ECE-Genehmigung auch in den USA?', a: 'Nein. Die USA sind kein UNECE-Mitgliedsstaat. Für den US-Markt gelten eigene Anforderungen: FMVSS (Federal Motor Vehicle Safety Standards), EPA-Emissionsvorschriften und je nach Bundesstaat zusätzlich CARB-Zulassungen. Das ist ein eigener Prozess, der nicht mit einer ECE-Genehmigung abgedeckt wird.' },
+      { q: 'Ist Vertraulichkeit bei Produktentwicklungen gewährleistet?', a: 'Ja. Diskretion bei Vorserien- und Prototypenteilen ist für uns Standard — wir unterzeichnen auf Wunsch NDAs und behandeln alle Projektdetails vertraulich. Kontaktieren Sie uns mit einer kurzen Projektbeschreibung per E-Mail.' },
+    ],
+  });
+});
+
 router.get('/b2b', (req, res) => {
   res.render('pages/b2b', {
     title: 'B2B-Prüftechnik für Unternehmen — Vmax Sued',
