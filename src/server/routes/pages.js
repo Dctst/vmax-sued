@@ -54,8 +54,8 @@ router.get('/tuev-eintragung', (req, res) => {
 
 router.get('/b2b', (req, res) => {
   res.render('pages/b2b', {
-    title: 'B2B-Prüftechnik für Unternehmen — Vmax Sued',
-    description: 'Prüfstandsmessungen und Datenaufbereitung für Tuninghersteller und Partnerwerkstätten. B2B-Service von Vmax Sued in Kooperation mit zugelassenen Sachverständigen.',
+    title: 'Tuningteil-Zulassung – ABE, Teilegutachten & ECE | Vmax Sued B2B',
+    description: 'Tuningteile zulassen lassen: Prüfstandsmessungen, Abgas- und Geräuschdaten für ABE, Teilegutachten und ECE-Typgenehmigung. NDA-fähig. Vmax Sued B2B für Hersteller und Importeure.',
     schema: {
       name: 'B2B-Prüfstandsmessungen',
       description: 'Prüfstandsmessungen, Abgasmessungen und Datenaufbereitung in Kooperation mit zugelassenen Sachverständigen.',
