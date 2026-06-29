@@ -18,7 +18,7 @@ router.get('/chiptuning', (req, res) => {
     title: 'Kennfeldoptimierung ab 349 € · Einzelabstimmung am Prüfstand — Vmax Sued',
     description: 'Stage 1 ab 349 €. Einzelabstimmung statt Software-Datei am Prüfstand. TÜV-Eintragung komplett übernommen.',
     schema: {
-      name: 'Kennfeldoptimierung & Kennfeldoptimierung',
+      name: 'Kennfeldoptimierung & Applikationen',
       description: 'Professionelle Einzelabstimmung auf dem Prüfstand. Stage 1, Stage 2 und individuelle Kennfeldoptimierung für alle gängigen Fahrzeuge.',
       price: '349',
     },
