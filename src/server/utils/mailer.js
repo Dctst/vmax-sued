@@ -7,7 +7,7 @@
 // Doc: https://docs.web3forms.com/
 
 const WEB3FORMS_ACCESS_KEY =
-  process.env.WEB3FORMS_ACCESS_KEY || '62129a10-fbf1-4a7a-bdbe-4619562ab80c';
+  process.env.WEB3FORMS_ACCESS_KEY || '5c3a711c-0182-4560-89e7-c9991b4e9008';
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
 function escapeHtml(s) {
