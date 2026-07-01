@@ -46,7 +46,7 @@
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div class="fixed inset-0 bg-bg-primary/98 z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300" id="mobile-menu">
+  <div class="fixed inset-0 bg-bg-primary z-40 flex flex-col items-center justify-center opacity-0 invisible pointer-events-none transition-[opacity,visibility] duration-300" id="mobile-menu">
     <nav class="flex flex-col items-center gap-6" aria-label="Mobile Navigation">
       <a href="/" class="font-display text-4xl uppercase text-text-primary hover:text-burnt transition-colors">Start</a>
       <a href="https://www.vmax.de" target="_blank" rel="noopener noreferrer" class="font-display text-4xl uppercase text-text-primary hover:text-burnt transition-colors inline-flex items-center gap-2">Tuning <svg class="w-5 h-5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>
@@ -89,14 +89,14 @@
       isOpen = !isOpen;
       toggle.setAttribute('aria-expanded', isOpen);
       if (isOpen) {
-        menu.classList.remove('opacity-0', 'pointer-events-none');
+        menu.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
         menu.classList.add('opacity-100');
         burgerTop.classList.add('rotate-45', 'translate-y-[4px]');
         burgerMid.classList.add('opacity-0');
         burgerBot.classList.add('-rotate-45', '-translate-y-[4px]', 'w-6');
         document.body.style.overflow = 'hidden';
       } else {
-        menu.classList.add('opacity-0', 'pointer-events-none');
+        menu.classList.add('opacity-0', 'invisible', 'pointer-events-none');
         menu.classList.remove('opacity-100');
         burgerTop.classList.remove('rotate-45', 'translate-y-[4px]');
         burgerMid.classList.remove('opacity-0');
