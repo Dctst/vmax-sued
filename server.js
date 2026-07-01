@@ -7,10 +7,13 @@ const helmet = require('helmet');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.set('trust proxy', 1);
+
 // www → non-www redirect
 app.use((req, res, next) => {
-  if (req.hostname.startsWith('www.')) {
-    return res.redirect(301, `https://${req.hostname.slice(4)}${req.url}`);
+  const host = req.headers.host || '';
+  if (host.startsWith('www.')) {
+    return res.redirect(301, `https://${host.slice(4)}${req.url}`);
   }
   next();
 });
