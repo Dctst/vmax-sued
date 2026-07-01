@@ -10,9 +10,15 @@
     <video
       class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-auto min-w-full min-h-full object-cover scale-[2.2] opacity-[0.7]"
       style="object-position: 20% 70%; filter: saturate(0.8) contrast(1.15) brightness(0.95);"
-      autoplay muted loop playsinline preload="auto">
+      autoplay muted loop playsinline preload="auto" disablepictureinpicture id="hero-video">
       <source src="/videos/hero.mp4" type="video/mp4">
     </video>
+    <script>
+      (function(){
+        var v = document.getElementById('hero-video');
+        if(v){ v.muted = true; v.play && v.play().catch(function(){}); }
+      })();
+    </script>
     <!-- Dark gradient overlay — keeps text readable, video stays visible -->
     <div class="absolute inset-0 bg-gradient-to-r from-bg-primary/85 via-bg-primary/40 to-bg-primary/75"></div>
     <!-- Vertical fade bottom-right so text bleibt lesbar -->
